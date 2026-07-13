@@ -1,0 +1,43 @@
+services:
+  # Schicht 1: simulierte SCADA-Schnittstelle (tut so, als kämen die Daten
+  # direkt von den Anlagen-Leitsystemen vor Ort).
+  scada-simulator:
+    build: ./scada-simulator
+    ports:
+      - "8001:8001"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8001/health')"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # Schicht 2: Integrationsschicht - holt SCADA-Daten, normalisiert,
+  # aggregiert zu KPIs, erkennt Alarme, stellt eigene API bereit.
+  integration-service:
+    build: ./integration-service
+    ports:
+      - "8000:8000"
+    environment:
+      SCADA_BASE_URL: http://scada-simulator:8001
+      DATABASE_URL: sqlite:///./data/integration.db
+      BACKFILL_DAYS: "30"
+      BACKFILL_INTERVAL_MINUTES: "60"
+      POLL_INTERVAL_SECONDS: "15"
+    volumes:
+      - integration-data:/app/data
+    depends_on:
+      scada-simulator:
+        condition: service_healthy
+
+  # Schicht 3: Frontend (Kunden- + Service-Dashboard).
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_BASE_URL: http://localhost:8000
+    depends_on:
+      - integration-service
+
+volumes:
+  integration-data:
