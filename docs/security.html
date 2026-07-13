@@ -1,0 +1,423 @@
+<title>Sicherheitskonzept — Energie-Portfolio Betriebsführung</title>
+<style>
+  :root {
+    --bg: #eef1f4;
+    --bg-grid: #dde3e9;
+    --panel: #ffffff;
+    --panel-2: #f5f7f9;
+    --line: #c7d0da;
+    --line-strong: #9fadbd;
+    --text: #16202b;
+    --text-dim: #56687c;
+    --text-faint: #8494a6;
+    --accent: #0e8f7f;
+    --accent-soft: #dff2ee;
+    --warn: #a5721c;
+    --warn-soft: #f6ecd8;
+    --critical: #b23b30;
+    --critical-soft: #f8e2df;
+    --mono: ui-monospace, "Cascadia Code", "SF Mono", "Consolas", "Liberation Mono", monospace;
+    --serif: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #101720; --bg-grid: #182230; --panel: #182230; --panel-2: #1d2938;
+      --line: #34455a; --line-strong: #4c6178; --text: #e7edf3; --text-dim: #9aabbe;
+      --text-faint: #6c7d90; --accent: #45d8c1; --accent-soft: #17332e;
+      --warn: #e3ac4c; --warn-soft: #3a2f18; --critical: #e2685c; --critical-soft: #3a201d;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #101720; --bg-grid: #182230; --panel: #182230; --panel-2: #1d2938;
+    --line: #34455a; --line-strong: #4c6178; --text: #e7edf3; --text-dim: #9aabbe;
+    --text-faint: #6c7d90; --accent: #45d8c1; --accent-soft: #17332e;
+    --warn: #e3ac4c; --warn-soft: #3a2f18; --critical: #e2685c; --critical-soft: #3a201d;
+  }
+  :root[data-theme="light"] {
+    --bg: #eef1f4; --bg-grid: #dde3e9; --panel: #ffffff; --panel-2: #f5f7f9;
+    --line: #c7d0da; --line-strong: #9fadbd; --text: #16202b; --text-dim: #56687c;
+    --text-faint: #8494a6; --accent: #0e8f7f; --accent-soft: #dff2ee;
+    --warn: #a5721c; --warn-soft: #f6ecd8; --critical: #b23b30; --critical-soft: #f8e2df;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background:
+      linear-gradient(var(--bg-grid) 1px, transparent 1px) 0 0 / 100% 28px,
+      linear-gradient(90deg, var(--bg-grid) 1px, transparent 1px) 0 0 / 28px 100%,
+      var(--bg);
+    color: var(--text);
+    font-family: var(--serif);
+    line-height: 1.55;
+    padding: 3.5rem 1.5rem 5rem;
+  }
+
+  .page { max-width: 980px; margin: 0 auto; }
+
+  .titleblock {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    gap: 1.5rem; border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 1.1rem; margin-bottom: 0.6rem; flex-wrap: wrap;
+  }
+  .eyebrow {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--text-dim);
+  }
+  h1 {
+    font-family: var(--serif); font-style: italic; font-weight: 600;
+    font-size: clamp(1.6rem, 3.2vw, 2.15rem); margin: 0.25rem 0 0;
+    text-wrap: balance; color: var(--text);
+  }
+  .rev {
+    font-family: var(--mono); font-size: 0.68rem; color: var(--text-faint);
+    text-align: right; line-height: 1.6; white-space: nowrap;
+  }
+
+  .intro { max-width: 66ch; color: var(--text-dim); font-size: 1.02rem; margin: 1.1rem 0 2.6rem; }
+  .intro strong { color: var(--text); font-weight: 600; }
+
+  h2 {
+    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.13em;
+    text-transform: uppercase; color: var(--text-faint); margin: 0 0 1.1rem;
+    display: flex; align-items: center; gap: 0.7rem;
+  }
+  h2::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+  /* ---- zone diagram ---- */
+  .zone-frame {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 1.4rem 1.5rem;
+    margin-bottom: 1rem;
+    overflow-x: auto;
+  }
+  .zones {
+    display: grid;
+    grid-template-columns: minmax(200px,1fr) 92px minmax(200px,1fr) 92px minmax(200px,1fr);
+    align-items: stretch;
+    min-width: 760px;
+  }
+  .zone {
+    border-radius: 6px;
+    padding: 1rem 1.05rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .zone.ot { background: var(--critical-soft); border: 1px solid var(--critical); }
+  .zone.dmz { background: var(--warn-soft); border: 1px solid var(--warn); }
+  .zone.it { background: var(--accent-soft); border: 1px solid var(--accent); }
+
+  .zone-tag {
+    font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .zone.ot .zone-tag { color: var(--critical); }
+  .zone.dmz .zone-tag { color: var(--warn); }
+  .zone.it .zone-tag { color: var(--accent); }
+
+  .zone-name { font-family: var(--mono); font-weight: 600; font-size: 0.92rem; color: var(--text); }
+  .zone-desc { font-size: 0.83rem; color: var(--text-dim); line-height: 1.45; }
+  .zone ul { margin: 0.2rem 0 0; padding-left: 1.05rem; font-size: 0.78rem; color: var(--text-dim); line-height: 1.55; }
+
+  /* barrier */
+  .barrier {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+  }
+  .wall {
+    width: 14px;
+    height: 78px;
+    background: repeating-linear-gradient(
+      -45deg,
+      var(--line-strong) 0 2px,
+      transparent 2px 7px
+    );
+    border-left: 2px solid var(--line-strong);
+    border-right: 2px solid var(--line-strong);
+    border-radius: 2px;
+  }
+  .barrier-label {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    color: var(--text-faint);
+    text-align: center;
+    line-height: 1.4;
+    width: 108px;
+  }
+  .barrier-arrow {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text-faint);
+  }
+
+  /* ---- threat table ---- */
+  .threats {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 2.4rem;
+  }
+  .threat-head {
+    display: grid;
+    grid-template-columns: 20px 1.3fr 1.5fr 90px;
+    gap: 0.8rem;
+    padding: 0.55rem 1rem;
+    background: var(--panel-2);
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+  }
+  .threat-row {
+    display: grid;
+    grid-template-columns: 20px 1.3fr 1.5fr 90px;
+    gap: 0.8rem;
+    align-items: start;
+    padding: 0.75rem 1rem;
+    border-top: 1px solid var(--line);
+    background: var(--panel);
+    font-size: 0.84rem;
+  }
+  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-top: 0.4rem; }
+  .dot.crit { background: var(--critical); }
+  .dot.warn { background: var(--warn); }
+  .threat-vector b { color: var(--text); font-weight: 600; display: block; }
+  .threat-vector span { color: var(--text-faint); font-size: 0.78rem; }
+  .threat-fix { color: var(--text-dim); }
+  .threat-fix code { font-family: var(--mono); font-size: 0.78rem; color: var(--accent); }
+  .sev {
+    font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.05em;
+    text-transform: uppercase; padding: 0.15rem 0.4rem; border-radius: 3px;
+    white-space: nowrap; justify-self: start;
+  }
+  .sev.crit { color: var(--critical); background: var(--critical-soft); }
+  .sev.warn { color: var(--warn); background: var(--warn-soft); }
+
+  /* ---- building blocks ---- */
+  .blocks {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.4rem;
+  }
+  @media (max-width: 780px) { .blocks { grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 520px) { .blocks { grid-template-columns: 1fr; } }
+  .block {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    padding: 0.95rem 1.05rem 1.05rem;
+  }
+  .block h4 {
+    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.04em;
+    color: var(--text); margin: 0 0 0.4rem;
+  }
+  .block p { margin: 0; font-size: 0.82rem; color: var(--text-dim); line-height: 1.5; }
+  .block code { font-family: var(--mono); font-size: 0.78rem; color: var(--accent); }
+
+  /* ---- reg callout ---- */
+  .callout {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    align-items: start;
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 1.1rem 1.3rem;
+    margin-bottom: 2.6rem;
+  }
+  .callout .mark {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--critical);
+    border: 1px solid var(--critical);
+    background: var(--critical-soft);
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+    line-height: 1;
+  }
+  .callout p { margin: 0; font-size: 0.88rem; color: var(--text-dim); }
+  .callout p b { color: var(--text); }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding-top: 1.1rem;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--text-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 640px) {
+    body { padding: 2.2rem 1rem 3.5rem; }
+    .titleblock { flex-direction: column; align-items: flex-start; }
+    .rev { text-align: left; }
+  }
+</style>
+
+<div class="page">
+
+  <div class="titleblock">
+    <div>
+      <div class="eyebrow">Energie-Portfolio Betriebsführung — Sicherheitskonzept</div>
+      <h1>Wie ich das gegen Angriffe absichern würde</h1>
+    </div>
+    <div class="rev">OT/IT-Trennung<br>Least Privilege · Read-only nach außen</div>
+  </div>
+
+  <p class="intro">
+    Die meisten realen Vorfälle bei Energieanlagen passieren nicht <em>in</em>
+    der SCADA-Technik, sondern an der <strong>Nahtstelle</strong> zwischen der
+    Anlagen-Seite (OT) und der Web-/Cloud-Seite (IT). Das Sicherheitskonzept
+    beginnt deshalb bei der Zonierung, nicht bei einer einzelnen Firewall-Regel.
+  </p>
+
+  <h2>Zonierung</h2>
+
+  <div class="zone-frame">
+    <div class="zones">
+
+      <div class="zone ot">
+        <div class="zone-tag">OT-Zone</div>
+        <div class="zone-name">Anlagen-Leitsysteme</div>
+        <div class="zone-desc">Windpark-/PV-/BESS-SCADA vor Ort. Kein Internetzugang, keine eingehenden Verbindungen von außen.</div>
+        <ul>
+          <li>OPC-UA / Modbus, ggf. Protokoll-Gateway</li>
+          <li>Physisch oft in Trafostationen zugänglich</li>
+        </ul>
+      </div>
+
+      <div class="barrier">
+        <div class="barrier-label">Data-Diode /<br>Firewall</div>
+        <div class="wall"></div>
+        <div class="barrier-arrow">OT → IT<br>nur lesend</div>
+      </div>
+
+      <div class="zone dmz">
+        <div class="zone-tag">DMZ</div>
+        <div class="zone-name">integration-service</div>
+        <div class="zone-desc">Einziger Dienst, der beide Seiten kennt. Holt Daten, validiert, normalisiert.</div>
+        <ul>
+          <li>OPC-UA Sign &amp; Encrypt statt Security-Policy „None"</li>
+          <li>Secrets aus Vault, nie im Code</li>
+          <li>Input-Validierung auch auf „internen" Daten</li>
+        </ul>
+      </div>
+
+      <div class="barrier">
+        <div class="barrier-label">WAF /<br>API-Gateway</div>
+        <div class="wall"></div>
+        <div class="barrier-arrow">Auth<br>Rate-Limit</div>
+      </div>
+
+      <div class="zone it">
+        <div class="zone-tag">IT / Cloud</div>
+        <div class="zone-name">Dashboards &amp; Nutzer</div>
+        <div class="zone-desc">Kunde, Techniker, Admin — nie direkter Zugriff auf OT, nur über die API der Integrationsschicht.</div>
+        <ul>
+          <li>OIDC/SSO, Rollen pro Nutzertyp</li>
+          <li>TLS überall, auch intern</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <h2>Angriffsvektoren &amp; Gegenmaßnahmen</h2>
+
+  <div class="threats">
+    <div class="threat-head">
+      <span></span><span>Vektor</span><span>Gegenmaßnahme</span><span>Schwere</span>
+    </div>
+    <div class="threat-row">
+      <span class="dot crit"></span>
+      <span class="threat-vector"><b>Kompromittiertes Dashboard steuert Anlage</b><span>Web-Schicht wird zum Sprungbrett ins OT-Netz</span></span>
+      <span class="threat-fix">Integrationsschicht darf OT gegenüber <code>nur lesen</code>; jede Steuerung liefe über einen separaten, streng geprüften Kanal — in dieser Demo existiert sie bewusst gar nicht.</span>
+      <span class="sev crit">kritisch</span>
+    </div>
+    <div class="threat-row">
+      <span class="dot crit"></span>
+      <span class="threat-vector"><b>Kompromittiertes Gateway-Firmware-Update</b><span>Supply-Chain-Angriff über Hersteller-Update</span></span>
+      <span class="threat-fix">Firmware/Updates nur signiert einspielen, Change-Fenster mit Vier-Augen-Prinzip.</span>
+      <span class="sev crit">kritisch</span>
+    </div>
+    <div class="threat-row">
+      <span class="dot warn"></span>
+      <span class="threat-vector"><b>Offene CORS / fehlende Auth auf der API</b><span>in der Demo bewusst <code>allow_origins=["*"]</code>, ohne Login</span></span>
+      <span class="threat-fix">Produktiv: OIDC-Login, <code>allow_origins</code> auf konkrete Domains, API-Keys mit Rotation zwischen Services.</span>
+      <span class="sev warn">mittel</span>
+    </div>
+    <div class="threat-row">
+      <span class="dot warn"></span>
+      <span class="threat-vector"><b>Veraltete Abhängigkeiten</b><span>FastAPI/SQLAlchemy/npm-Pakete als Einfallstor</span></span>
+      <span class="threat-fix">Automatisiertes Dependency-Scanning (z.B. Dependabot/Renovate) + Patch-Fenster im Betrieb.</span>
+      <span class="sev warn">mittel</span>
+    </div>
+    <div class="threat-row">
+      <span class="dot warn"></span>
+      <span class="threat-vector"><b>Stiller Datenabfluss / unautorisierter Zugriff</b><span>fehlende Nachvollziehbarkeit, wer was abgefragt hat</span></span>
+      <span class="threat-fix">Audit-Log für jeden Zugriff und jede Wartungsaktion, Anomalieerkennung auf Zugriffsmuster (nicht nur auf Anlagenwerte).</span>
+      <span class="sev warn">mittel</span>
+    </div>
+  </div>
+
+  <h2>Sicherheitsbausteine im Detail</h2>
+
+  <div class="blocks">
+    <div class="block">
+      <h4>Auth &amp; Rollen</h4>
+      <p>OIDC/SSO statt Eigenbau. Kunde sieht nur sein Portfolio, Techniker sieht Wartung, Admin sieht alles. Mandantentrennung auf DB-Ebene, nicht nur im UI.</p>
+    </div>
+    <div class="block">
+      <h4>Verschlüsselung</h4>
+      <p>TLS zwischen allen drei Diensten, nicht nur zum Browser. OPC-UA mit <code>Sign &amp; Encrypt</code> statt unverschlüsseltem Klartext-TCP.</p>
+    </div>
+    <div class="block">
+      <h4>Secrets &amp; Dependencies</h4>
+      <p>Connection-Strings/API-Keys aus einem Secret-Manager (Vault, Cloud-KMS), nie im Repo. Regelmäßiges Dependency-Scanning.</p>
+    </div>
+    <div class="block">
+      <h4>Monitoring &amp; Audit</h4>
+      <p>Wer hat wann welche Anlage abgefragt oder ein Ticket geschlossen? Anomalien auf Zugriffsmuster erkennen, nicht nur auf Messwerte.</p>
+    </div>
+    <div class="block">
+      <h4>Redundanz</h4>
+      <p>Verfügbarkeit ist auch ein Sicherheitsthema: Backup-Historian und Failover, damit ein Ausfall/Angriff das Monitoring nicht komplett lahmlegt.</p>
+    </div>
+    <div class="block">
+      <h4>Physisch &amp; Lieferkette</h4>
+      <p>Gateways stehen oft zugänglich in Trafostationen. Zugriffsschutz vor Ort, signierte Firmware, geprüfte Hersteller-Updates.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <span class="mark">NIS2</span>
+    <p>
+      In der EU/Österreich greift für Energieinfrastruktur ab einer gewissen
+      Größe die <b>NIS2-Richtlinie</b>: Risikomanagement-Maßnahmen,
+      Meldepflicht für Vorfälle binnen 24&nbsp;Stunden, Absicherung der
+      Lieferkette. Das beeinflusst den Zeitplan real — siehe Risiko-Log im
+      Umsetzungsplan.
+    </p>
+  </div>
+
+  <footer>
+    <span>OT-Zone → Data-Diode → DMZ (integration-service) → WAF → IT/Cloud</span>
+    <span>Least Privilege · Read-only nach außen</span>
+  </footer>
+
+</div>
