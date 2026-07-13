@@ -55,7 +55,7 @@
   }
 
   .shell {
-    max-width: 1240px;
+    max-width: 1280px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 240px 1fr;
@@ -66,177 +66,95 @@
     .shell { grid-template-columns: 1fr; }
   }
 
-  /* ---- sidebar ---- */
   .toc {
-    position: sticky;
-    top: 1.5rem;
-    align-self: start;
-    max-height: calc(100vh - 3rem);
-    overflow-y: auto;
-    padding-right: 0.4rem;
+    position: sticky; top: 1.5rem; align-self: start;
+    max-height: calc(100vh - 3rem); overflow-y: auto; padding-right: 0.4rem;
   }
   @media (max-width: 900px) {
     .toc { position: relative; top: 0; max-height: none; margin-bottom: 1.5rem; }
   }
   .toc .brand {
-    font-family: var(--mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-faint);
-    margin-bottom: 1rem;
-    padding-bottom: 0.8rem;
-    border-bottom: 1px solid var(--line-strong);
+    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-faint); margin-bottom: 1rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--line-strong);
   }
   .toc .grp { margin-bottom: 1.3rem; }
-  .toc .grp-label {
-    font-family: var(--mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-faint);
-    margin-bottom: 0.4rem;
-  }
-  .toc a {
-    display: block;
-    font-family: var(--mono);
-    font-size: 0.78rem;
-    color: var(--text-dim);
-    text-decoration: none;
-    padding: 0.22rem 0 0.22rem 0.6rem;
-    border-left: 2px solid transparent;
-  }
+  .toc .grp-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 0.4rem; }
+  .toc a { display: block; font-family: var(--mono); font-size: 0.78rem; color: var(--text-dim); text-decoration: none; padding: 0.22rem 0 0.22rem 0.6rem; border-left: 2px solid transparent; }
   .toc a:hover { color: var(--text); }
   .toc a.active { color: var(--accent); border-left-color: var(--accent); font-weight: 600; }
 
-  /* ---- main content ---- */
   main { min-width: 0; }
 
-  .titleblock {
-    border-bottom: 1px solid var(--line-strong);
-    padding-bottom: 1.1rem;
-    margin-bottom: 1.4rem;
-  }
-  .eyebrow {
-    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--text-dim);
-  }
-  h1 {
-    font-family: var(--serif); font-style: italic; font-weight: 600;
-    font-size: clamp(1.6rem, 3vw, 2.1rem); margin: 0.25rem 0 0; text-wrap: balance;
-  }
-  .intro { max-width: 68ch; color: var(--text-dim); font-size: 1.02rem; margin: 1rem 0 0; }
+  .titleblock { border-bottom: 1px solid var(--line-strong); padding-bottom: 1.1rem; margin-bottom: 1.4rem; }
+  .eyebrow { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); }
+  h1 { font-family: var(--serif); font-style: italic; font-weight: 600; font-size: clamp(1.6rem, 3vw, 2.1rem); margin: 0.25rem 0 0; text-wrap: balance; }
+  .intro { max-width: 70ch; color: var(--text-dim); font-size: 1.02rem; margin: 1rem 0 0; }
   .intro strong { color: var(--text); }
 
-  section { scroll-margin-top: 1.2rem; margin-bottom: 3rem; }
+  section { scroll-margin-top: 1.2rem; margin-bottom: 3.2rem; }
 
-  h2 {
-    font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--text); margin: 0 0 0.3rem;
-    padding-top: 1.6rem; border-top: 1px solid var(--line);
-  }
+  h2 { font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); margin: 0 0 0.3rem; padding-top: 1.6rem; border-top: 1px solid var(--line); }
   .h2-sub { font-family: var(--serif); font-size: 0.92rem; color: var(--text-dim); font-style: italic; margin: 0 0 1.2rem; }
+  h3 { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); margin: 1.8rem 0 0.9rem; }
 
-  h3 {
-    font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--text-faint); margin: 1.6rem 0 0.8rem;
-  }
-
-  /* ---- overview map ---- */
   .map-frame { border: 1px solid var(--line); border-radius: 6px; padding: 1.2rem; overflow-x: auto; margin-bottom: 1rem; }
   .map-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; min-width: 640px; }
   .map-col { display: flex; flex-direction: column; gap: 0.5rem; }
-  .map-col-head {
-    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase;
-    padding: 0.3rem 0.6rem; border-radius: 4px; text-align: center;
-  }
+  .map-col-head { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.3rem 0.6rem; border-radius: 4px; text-align: center; }
   .map-col.scada .map-col-head { background: var(--svc-scada-soft); color: var(--svc-scada); }
   .map-col.integ .map-col-head { background: var(--svc-int-soft); color: var(--svc-int); }
   .map-col.fe .map-col-head { background: var(--svc-fe-soft); color: var(--svc-fe); }
-  .map-file {
-    font-family: var(--mono); font-size: 0.72rem; color: var(--text-dim);
-    background: var(--panel-2); border: 1px solid var(--line); border-radius: 4px;
-    padding: 0.32rem 0.55rem;
-  }
-  .map-arrow { text-align: center; font-family: var(--mono); font-size: 0.7rem; color: var(--text-faint); padding: 0.2rem 0; }
+  .map-file { font-family: var(--mono); font-size: 0.72rem; color: var(--text-dim); background: var(--panel-2); border: 1px solid var(--line); border-radius: 4px; padding: 0.32rem 0.55rem; }
 
-  /* ---- concept glossary ---- */
-  .concepts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.9rem; margin-bottom: 1rem; }
-  @media (max-width: 700px) { .concepts { grid-template-columns: 1fr; } }
-  .concept {
-    background: var(--panel); border: 1px solid var(--line); border-left: 3px solid var(--accent);
-    border-radius: 4px; padding: 0.85rem 1rem 0.95rem;
-  }
-  .concept h4 { font-family: var(--mono); font-size: 0.78rem; margin: 0 0 0.35rem; color: var(--text); }
-  .concept p { margin: 0 0 0.5rem; font-size: 0.83rem; color: var(--text-dim); }
-  .concept .file-ref { font-family: var(--mono); font-size: 0.66rem; color: var(--text-faint); margin-top: 0.4rem; }
+  .concepts { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .concept { background: var(--panel); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 4px; padding: 1rem 1.2rem 1.15rem; }
+  .concept h4 { font-family: var(--mono); font-size: 0.82rem; margin: 0 0 0.55rem; color: var(--text); }
+  .concept p { margin: 0 0 0.65rem; font-size: 0.88rem; color: var(--text-dim); max-width: 78ch; }
+  .concept p:last-of-type { margin-bottom: 0.5rem; }
+  .concept .file-ref { font-family: var(--mono); font-size: 0.66rem; color: var(--text-faint); margin-top: 0.5rem; }
   .concept .file-ref code { color: var(--accent); }
 
-  /* ---- code blocks ---- */
-  pre.code {
-    background: var(--panel-2); border: 1px solid var(--line); border-radius: 5px;
-    padding: 0.7rem 0.9rem; overflow-x: auto; margin: 0.5rem 0 0;
-    font-family: var(--mono); font-size: 0.74rem; line-height: 1.55; color: var(--text);
-  }
+  pre.code { background: var(--panel-2); border: 1px solid var(--line); border-radius: 5px; padding: 0.75rem 0.95rem; overflow-x: auto; margin: 0.6rem 0 0.7rem; font-family: var(--mono); font-size: 0.74rem; line-height: 1.6; color: var(--text); }
   pre.code .cm { color: var(--text-faint); font-style: italic; }
-  pre.code .kw { color: var(--accent); }
 
-  /* ---- file card ---- */
-  .file-card {
-    border: 1px solid var(--line); border-radius: 6px; background: var(--panel);
-    padding: 1.1rem 1.25rem 1.3rem; margin-bottom: 1rem;
-  }
-  .file-card-head { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
-  .file-name { font-family: var(--mono); font-weight: 600; font-size: 0.92rem; color: var(--text); }
+  .file-card { border: 1px solid var(--line); border-radius: 6px; background: var(--panel); padding: 1.2rem 1.3rem 1.4rem; margin-bottom: 1.3rem; }
+  .file-card-head { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
+  .file-name { font-family: var(--mono); font-weight: 600; font-size: 0.95rem; color: var(--text); }
   .svc-tag { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.05em; text-transform: uppercase; padding: 0.12rem 0.4rem; border-radius: 3px; }
   .svc-tag.scada { background: var(--svc-scada-soft); color: var(--svc-scada); }
   .svc-tag.integ { background: var(--svc-int-soft); color: var(--svc-int); }
   .svc-tag.fe { background: var(--svc-fe-soft); color: var(--svc-fe); }
-  .file-purpose { font-size: 0.88rem; color: var(--text-dim); margin: 0 0 0.6rem; }
-  .concept-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.5rem 0; }
-  .ctag {
-    font-family: var(--mono); font-size: 0.62rem; color: var(--text-dim);
-    background: var(--panel-2); border: 1px solid var(--line); border-radius: 999px; padding: 0.15rem 0.55rem;
-  }
-  .talks-to { font-family: var(--mono); font-size: 0.68rem; color: var(--text-faint); margin-top: 0.6rem; }
+  .file-purpose { font-size: 0.9rem; color: var(--text-dim); margin: 0 0 0.7rem; max-width: 78ch; }
+  .file-purpose + .file-purpose { margin-top: -0.3rem; }
+  .concept-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.6rem 0; }
+  .ctag { font-family: var(--mono); font-size: 0.62rem; color: var(--text-dim); background: var(--panel-2); border: 1px solid var(--line); border-radius: 999px; padding: 0.15rem 0.55rem; }
+  .talks-to { font-family: var(--mono); font-size: 0.68rem; color: var(--text-faint); margin-top: 0.7rem; }
   .talks-to b { color: var(--text-dim); font-weight: 600; }
   .talks-to code { color: var(--accent); }
 
-  /* ---- trace ---- */
-  .trace { display: flex; flex-direction: column; gap: 0; margin-bottom: 1rem; }
-  .trace-step {
-    display: grid; grid-template-columns: 32px 1fr; gap: 0.9rem;
-    padding: 0.9rem 0; border-top: 1px dashed var(--line);
-  }
+  .walkhead { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); margin: 1rem 0 0.4rem; }
+  .trace { display: flex; flex-direction: column; gap: 0; margin-bottom: 0.4rem; }
+  .trace-step { display: grid; grid-template-columns: 30px 1fr; gap: 0.9rem; padding: 0.85rem 0; border-top: 1px dashed var(--line); }
   .trace-step:first-child { border-top: none; }
-  .trace-n {
-    display: flex; align-items: center; justify-content: center;
-    width: 26px; height: 26px; border-radius: 50%;
-    background: var(--accent-soft); color: var(--accent);
-    font-family: var(--mono); font-size: 0.72rem; font-weight: 700;
-    margin-top: 0.1rem;
-  }
-  .trace-step h5 { margin: 0 0 0.25rem; font-family: var(--mono); font-size: 0.82rem; color: var(--text); }
-  .trace-step p { margin: 0; font-size: 0.85rem; color: var(--text-dim); }
+  .trace-n { display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-family: var(--mono); font-size: 0.68rem; font-weight: 700; margin-top: 0.1rem; }
+  .trace-step h5 { margin: 0 0 0.3rem; font-family: var(--mono); font-size: 0.8rem; color: var(--text); }
+  .trace-step p { margin: 0; font-size: 0.85rem; color: var(--text-dim); max-width: 74ch; }
   .trace-step code { color: var(--accent); font-family: var(--mono); font-size: 0.8rem; }
 
-  footer {
-    border-top: 1px solid var(--line); padding-top: 1.1rem; margin-top: 2rem;
-    font-family: var(--mono); font-size: 0.68rem; color: var(--text-faint);
-    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;
-  }
+  .scenario { background: var(--warn-soft); border: 1px solid var(--warn); border-radius: 5px; padding: 0.7rem 0.95rem; margin: 0.7rem 0; font-size: 0.84rem; color: var(--text-dim); }
+  .scenario b { color: var(--warn); font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.04em; text-transform: uppercase; display: block; margin-bottom: 0.3rem; }
+
+  footer { border-top: 1px solid var(--line); padding-top: 1.1rem; margin-top: 2rem; font-family: var(--mono); font-size: 0.68rem; color: var(--text-faint); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
 </style>
 
 <div class="shell">
   <nav class="toc" id="toc">
     <div class="brand">Lernhilfe · Codebase</div>
-
     <div class="grp">
       <div class="grp-label">Start</div>
       <a href="#ueberblick">Überblick &amp; Karte</a>
       <a href="#konzepte">Python-/TS-Konzepte</a>
     </div>
-
     <div class="grp">
       <div class="grp-label">scada-simulator</div>
       <a href="#sim-portfolio">portfolio.py</a>
@@ -244,7 +162,6 @@
       <a href="#sim-models">models.py</a>
       <a href="#sim-main">main.py</a>
     </div>
-
     <div class="grp">
       <div class="grp-label">integration-service</div>
       <a href="#int-config">config.py</a>
@@ -260,7 +177,6 @@
       <a href="#int-schemas">schemas.py</a>
       <a href="#int-main">main.py</a>
     </div>
-
     <div class="grp">
       <div class="grp-label">frontend</div>
       <a href="#fe-main">main.tsx / App.tsx</a>
@@ -270,7 +186,6 @@
       <a href="#fe-components">components/*</a>
       <a href="#fe-pages">pages/*</a>
     </div>
-
     <div class="grp">
       <div class="grp-label">Zusammenhang</div>
       <a href="#trace">Ein Wert, der ganze Weg</a>
@@ -282,17 +197,17 @@
       <div class="eyebrow">Lernhilfe — Python-Hintergrund &amp; Programmaufbau</div>
       <h1>Wie der Code wirklich zusammenhängt</h1>
       <p class="intro">
-        Diese Seite ist zum <strong>Nachschlagen</strong> gedacht, nicht zum
-        einmaligen Durchlesen: links das Inhaltsverzeichnis, rechts pro Datei
-        Zweck, die Python-/TS-Konzepte darin und wer mit wem spricht. Ganz
-        unten wird ein einzelner Messwert einmal komplett durchs System verfolgt.
+        Zweite, ausführlichere Fassung: statt nur zu <em>benennen</em>, was ein
+        Konzept ist, wird hier jedes Mal auch erklärt, <strong>was ohne es
+        passieren würde</strong> und <strong>wie es Zeile für Zeile
+        funktioniert</strong> — direkt am echten Code dieses Projekts, mit
+        konkreten Fehlerszenarien statt Lehrbuch-Abstraktion.
       </p>
     </div>
 
     <section id="ueberblick">
       <h2>Überblick</h2>
       <p class="h2-sub">Drei Services, ein Datenfluss — jede Spalte unten ist ein eigener Docker-Container</p>
-
       <div class="map-frame">
         <div class="map-cols">
           <div class="map-col scada">
@@ -324,136 +239,249 @@
           </div>
         </div>
       </div>
-      <p style="font-size:0.85rem; color:var(--text-dim);">
-        Faustregel beim Lesen: <b>scada-simulator</b> kennt nur Rohdaten,
-        <b>integration-service</b> ist der einzige, der beide Sprachen spricht
-        (SCADA-Tags <em>und</em> eigenes Schema), <b>frontend</b> kennt nur
-        noch das eigene, saubere Schema aus <code>schemas.py</code>.
+      <p style="font-size:0.9rem; color:var(--text-dim); max-width:78ch;">
+        Faustregel beim Lesen: <b>scada-simulator</b> kennt nur Rohdaten im
+        Tag-Format und generiert sie neu bei jeder Anfrage — er speichert
+        nichts. <b>integration-service</b> ist der einzige Dienst, der beide
+        Sprachen spricht: er liest SCADA-Tags <em>und</em> schreibt/liest sein
+        eigenes, normalisiertes Schema in einer eigenen Datenbank.
+        <b>frontend</b> kennt nur noch dieses eigene, saubere Schema aus
+        <code>schemas.py</code> — nie einen SCADA-Tag-Namen, nie einen
+        Sonderfall pro Anlagentyp.
       </p>
     </section>
 
     <section id="konzepte">
       <h2>Python-/TS-Konzepte in diesem Code</h2>
-      <p class="h2-sub">Nicht abstrakt erklärt, sondern immer am echten Vorkommen in dieser Codebase</p>
+      <p class="h2-sub">Mit "was wäre ohne das" und "was passiert konkret" — nicht nur der Name des Features</p>
 
       <h3>Sprache &amp; Typisierung</h3>
       <div class="concepts">
+
         <div class="concept">
-          <h4>Type Hints + <code>from __future__ import annotations</code></h4>
-          <p>Jede Funktion ist vollständig typisiert (<code>def wind_power_kw(asset: Asset, ws: float) -&gt; float</code>). Der <code>__future__</code>-Import lässt Annotationen als Text statt sofort ausgewertet — dadurch kann eine Klasse sich selbst oder eine später definierte Klasse referenzieren, ohne Reihenfolge-Probleme.</p>
-          <div class="file-ref">überall, z.B. <code>simulation.py</code> Zeile 1</div>
+          <h4>Type Hints — und was sie NICHT tun</h4>
+          <p>Python selbst prüft Type Hints zur Laufzeit nicht. <code>def wind_power_kw(asset: Asset, ws: float) -&gt; float:</code> ist erstmal nur Dokumentation — rufst du die Funktion mit einem String statt einem <code>Asset</code>-Objekt auf, crasht an dieser Zeile nichts. Der Fehler zeigt sich erst später, wenn der Code versucht, z.B. <code>asset.rated_power_kw</code> zu lesen und feststellt, dass ein String kein solches Attribut hat.</p>
+          <p>Type Hints entfalten ihre eigentliche Kraft erst durch Werkzeuge, die sie <em>aktiv auslesen</em>: dein Editor (Autovervollständigung, "meinst du wirklich diesen Typ?"), mypy/pyright (statische Prüfung ohne den Code auszuführen) — und in diesem Projekt vor allem <strong>Pydantic und FastAPI</strong>, die Type Hints zur Laufzeit benutzen, um ankommende Daten tatsächlich zu validieren und zu konvertieren (siehe Pydantic-Karte weiter unten).</p>
+          <div class="file-ref">überall im Backend, z.B. <code>simulation.py</code></div>
         </div>
+
         <div class="concept">
-          <h4><code>@dataclass</code></h4>
-          <p>Erzeugt automatisch <code>__init__</code>, <code>__repr__</code>, <code>__eq__</code> aus den Feldern. <code>field(default=0)</code> statt <code>= 0</code> direkt, weil dataclass sonst bei veränderlichen Defaults (Listen/Dicts) warnt.</p>
+          <h4><code>from __future__ import annotations</code> — warum diese Zeile überall steht</h4>
+          <p>Normalerweise wertet Python eine Typannotation im selben Moment aus, in dem Funktion oder Klasse definiert wird. Bei <code>def f(x: Foo) -&gt; Bar:</code> muss <code>Foo</code> und <code>Bar</code> zu diesem Zeitpunkt im Modul bereits existieren — sonst ein <code>NameError</code>. Das wird lästig bei Selbstreferenzen oder Verweisen auf eine erst weiter unten definierte Klasse.</p>
+          <p><code>from __future__ import annotations</code> (PEP&nbsp;563) ändert das grundlegend: jede Annotation wird nur noch als reiner, unausgewerteter Text gespeichert. Erst wenn eine Bibliothek wie Pydantic oder SQLAlchemy die Annotation tatsächlich braucht, liest sie sie gezielt aus — zu einem Zeitpunkt, an dem garantiert alle Namen existieren. Praktischer Nebeneffekt in diesem Projekt: die kurze <code>X | None</code>-Schreibweise und eingebaute generische Typen wie <code>list[dict]</code> funktionieren dadurch unabhängig von der genauen Python-Version.</p>
+          <div class="file-ref">Zeile 1 in praktisch jeder <code>.py</code>-Datei</div>
+        </div>
+
+        <div class="concept">
+          <h4><code>@dataclass</code> — was du sonst von Hand schreiben müsstest</h4>
+          <p>Ohne <code>@dataclass</code> müsste <code>Asset</code> in <code>portfolio.py</code> so aussehen:</p>
+          <pre class="code">class Asset:
+    def __init__(self, site_id, asset_id, type, name, rated_power_kw,
+                 rotor_diameter_m=None, cut_in_ms=3.0, ...):
+        self.site_id = site_id
+        self.asset_id = asset_id
+        <span class="cm"># ... eine Zeile pro Feld, von Hand</span>
+    def __repr__(self):
+        return f"Asset(site_id={self.site_id!r}, asset_id={self.asset_id!r}, ...)"
+    def __eq__(self, other):
+        return isinstance(other, Asset) and self.site_id == other.site_id and ...</pre>
+          <p><code>@dataclass</code> generiert <code>__init__</code>, eine lesbare <code>__repr__</code> (wichtig fürs Debuggen — <code>print(asset)</code> zeigt alle Felder) und <code>__eq__</code> (zwei <code>Asset</code>-Instanzen mit denselben Feldwerten gelten als gleich) automatisch aus den reinen Feld-Deklarationen.</p>
+          <p><code>seed: int = field(default=0)</code> ist hier austauschbar mit <code>= 0</code>, weil <code>int</code> unveränderlich ist. <code>field()</code> wird zwingend, sobald ein Default veränderlich ist: <code>x: list = []</code> würde <em>dieselbe</em> Listeninstanz für jede einzelne <code>Asset</code>-Instanz wiederverwenden (ein klassischer Python-Fallstrick) — <code>field(default_factory=list)</code> erzeugt dagegen bei jeder neuen Instanz eine frische Liste.</p>
           <div class="file-ref"><code>scada-simulator/app/portfolio.py</code> — <code>Site</code>, <code>Asset</code></div>
         </div>
+
         <div class="concept">
-          <h4><code>class AssetType(str, Enum)</code></h4>
-          <p>Doppelt erbend: verhält sich wie ein String (JSON-serialisierbar, vergleichbar mit <code>==</code>) und ist gleichzeitig ein typsicherer, abgeschlossener Wertebereich statt "irgendein String".</p>
+          <h4><code>class AssetType(str, Enum)</code> — doppelte Vererbung mit Zweck</h4>
+          <p>Diese Klasse erbt gleichzeitig von <code>str</code> <em>und</em> von <code>Enum</code>. Das Ergebnis verhält sich in jeder Hinsicht wie ein String (<code>AssetType.WIND_TURBINE == "wind_turbine"</code> ist <code>True</code>, er lässt sich direkt in JSON schreiben), ist aber gleichzeitig ein abgeschlossener, benannter Wertebereich — Editor und Typchecker wissen, dass hier nur genau drei Werte möglich sind, nicht "irgendein String".</p>
+          <p>Ein reines <code>Enum</code> (ohne <code>str</code>) würde sich beim Serialisieren als <code>"AssetType.WIND_TURBINE"</code> (der Name, nicht der Wert) zeigen, sofern man nicht überall explizit <code>.value</code> anhängt. Die doppelte Vererbung erspart genau diesen Schritt an jeder Stelle, an der FastAPI/Pydantic den Wert automatisch in eine Antwort schreibt.</p>
           <div class="file-ref"><code>portfolio.py</code> Zeile 18</div>
         </div>
+
         <div class="concept">
           <h4>Union-Typen mit <code>|</code></h4>
-          <p><code>float | str | None</code> statt <code>Optional[Union[float, str]]</code> — seit Python 3.10 die kürzere Schreibweise für "eines von mehreren Typen oder nichts".</p>
+          <p>Seit Python 3.10 (PEP&nbsp;604) verbindet man Typen mit <code>|</code> statt <code>typing.Union[...]</code>/<code>typing.Optional[...]</code>. <code>float | str | None</code> in <code>TagReading.value</code> bedeutet konkret: der Wert ist entweder eine Zahl (die meisten Tags), ein String (der <code>alarm_code</code>-Tag liefert z.B. <code>"A101_GEARBOX_TEMP"</code>) oder nichts. Ohne diese drei Möglichkeiten explizit im Typ zu benennen, müsste jede Stelle, die <code>value</code> liest, "zur Laufzeit raten", was für ein Ding gerade drinsteckt.</p>
           <div class="file-ref"><code>scada-simulator/app/models.py</code> — <code>TagReading.value</code></div>
         </div>
+
         <div class="concept">
-          <h4>Modulweite Lookup-Tabellen (Dicts statt if/elif)</h4>
-          <p><code>RAW_TAG_TO_METRIC</code> ist ein Dict von rohem Tag-Namen auf einheitlichen Metrik-Namen — Erweiterung um einen neuen Tag heißt "eine Zeile ergänzen", nicht "eine if-Kette anfassen".</p>
+          <h4>Dict als Lookup-Tabelle statt if/elif-Kette</h4>
+          <p>Die Alternative zu <code>RAW_TAG_TO_METRIC</code> wäre eine Kette wie <code>if tag_name == "active_power_kw": metric = "power_kw" elif tag_name == "power_kw": metric = "power_kw" elif ...</code> — funktional gleichwertig, aber jede neue SCADA-Tag-Variante würde eine weitere <code>elif</code>-Zeile <em>innerhalb der Funktionslogik</em> bedeuten, mit Risiko, eine Bedingung falsch zu treffen oder eine Reihenfolge-Abhängigkeit einzubauen.</p>
+          <p>Als Dict ist die Zuordnung reine Daten: <code>RAW_TAG_TO_METRIC.get(tag_name)</code> ist ein einziger, immer gleicher Lookup — ein neuer Tag bedeutet "eine Zeile in einer Tabelle ergänzen", nicht "die Funktion <code>normalize_tag_readings</code> anfassen".</p>
           <div class="file-ref"><code>normalize.py</code> Zeile 15</div>
         </div>
+
         <div class="concept">
-          <h4><code>defaultdict</code> zum Gruppieren</h4>
-          <p>Erspart <code>if key not in d: d[key] = []</code> vor jedem Anhängen — <code>defaultdict(list)</code> legt die leere Liste automatisch beim ersten Zugriff an.</p>
-          <div class="file-ref"><code>kpi.py</code> — <code>_fetch_metric()</code></div>
+          <h4><code>defaultdict(list)</code> — was ohne sie nötig wäre</h4>
+          <p>Ein normales Dict wirft bei <code>d[key].append(x)</code> einen <code>KeyError</code>, wenn <code>key</code> noch nicht existiert. Ohne <code>defaultdict</code> müsste man vor jedem Anhängen schreiben: <code>if key not in d: d[key] = []</code> — dann erst <code>d[key].append(x)</code>.</p>
+          <p><code>defaultdict(list)</code> ruft bei jedem ersten Zugriff auf einen unbekannten Key automatisch <code>list()</code> auf und legt das Ergebnis (eine leere Liste) als Wert ab, <em>bevor</em> <code>.append()</code> überhaupt ausgeführt wird — die Prüfung verschwindet komplett aus dem Aufrufer-Code.</p>
+          <div class="file-ref"><code>kpi.py</code> — <code>_fetch_metric()</code>, <code>yield_series()</code></div>
         </div>
+
         <div class="concept">
-          <h4><code>zip(points, points[1:])</code></h4>
-          <p>Klassischer Trick, um über <em>Paare benachbarter</em> Listenelemente zu iterieren (hier: zwei Zeitpunkte für die trapezförmige Integration) — ohne Indexrechnerei.</p>
+          <h4><code>zip(points, points[1:])</code> — Paare aus Nachbarn bilden</h4>
+          <p>Ein konkretes Durchrechnen: aus <code>points = [A, B, C, D]</code> wird <code>points[1:]</code> zu <code>[B, C, D]</code>. <code>zip</code> kombiniert beide Listen Index-für-Index und stoppt bei der kürzeren: <code>(A,B), (B,C), (C,D)</code>. Jedes Element außer dem allerersten und dem allerletzten taucht also genau zweimal auf — einmal als "zweiter Partner", einmal als "erster Partner" des nächsten Paares.</p>
+          <p>Für die Trapez-Integration in <code>kpi.py</code> ist das exakt das, was gebraucht wird: jeweils zwei zeitlich benachbarte (Zeitpunkt, Leistung)-Messungen, um die Fläche des Trapezes zwischen ihnen zu berechnen (siehe Walkthrough bei <code>kpi.py</code> weiter unten).</p>
           <div class="file-ref"><code>kpi.py</code> — <code>_integrate_trapezoidal()</code></div>
         </div>
+
       </div>
 
-      <h3>Async &amp; I/O</h3>
+      <h3>Async &amp; nebenläufiges I/O</h3>
       <div class="concepts">
+
         <div class="concept">
-          <h4><code>async def</code> / <code>await</code></h4>
-          <p>Der Prozess blockiert nicht, während er auf eine HTTP-Antwort vom Mock-SCADA wartet — in der Wartezeit kann derselbe Python-Prozess andere Anfragen (z.B. einen Dashboard-Request) bedienen.</p>
-          <div class="file-ref"><code>scada_client.py</code>, <code>ingestion.py</code></div>
+          <h4><code>async def</code> / <code>await</code> — warum blockierendes I/O hier ein Problem wäre</h4>
+          <p>Ein normaler, synchroner HTTP-Aufruf (z.B. mit <code>requests.get(url)</code>) blockiert den kompletten Python-Prozess, bis die Antwort da ist — in dieser Wartezeit kann derselbe Prozess absolut nichts anderes tun, auch keinen eingehenden Dashboard-Request beantworten.</p>
+          <p><code>async def</code> + <code>await</code> funktionieren kooperativ: trifft eine <code>await</code>-Zeile auf eine noch nicht fertige I/O-Operation (hier: eine HTTP-Antwort vom Mock-SCADA), gibt die Funktion die Kontrolle an den Event-Loop zurück. Der Event-Loop nutzt genau diese Lücke, um z.B. einen wartenden Dashboard-Request zu bedienen, und kehrt erst zur ursprünglichen Funktion zurück, sobald deren Antwort da ist. Das ist der Grund, warum ein einziger <code>integration-service</code>-Prozess gleichzeitig die REST-API bedienen <em>und</em> im Hintergrund alle 15 Sekunden pollen kann — ohne Threads, ohne mehrere Prozesse.</p>
+          <div class="file-ref"><code>scada_client.py</code>, <code>ingestion.py</code>, <code>main.py</code></div>
         </div>
+
         <div class="concept">
-          <h4>Async Context Manager (<code>async with</code>)</h4>
-          <p><code>async with httpx.AsyncClient(...) as client:</code> öffnet die HTTP-Verbindung und garantiert, dass sie wieder geschlossen wird — auch wenn unterwegs ein Fehler auftritt.</p>
+          <h4>Async Context Manager (<code>async with</code>) — Aufräumen wird garantiert</h4>
+          <p>Ein Context Manager garantiert "Aufräumen", egal ob der Codeblock normal durchläuft oder eine Exception wirft — bekannt von <code>with open(file) as f:</code>, das die Datei garantiert schließt. <code>async with</code> ist dieselbe Idee für Ressourcen, deren Öffnen/Schließen selbst <code>await</code>-fähig ist.</p>
+          <pre class="code">async def fetch_live_readings() -> list[dict]:
+    async with httpx.AsyncClient(base_url=SCADA_BASE_URL, timeout=30) as client:
+        resp = await client.get("/scada/live")
+        resp.raise_for_status()
+        return resp.json()
+    <span class="cm"># client wird HIER garantiert geschlossen — auch wenn raise_for_status()
+    # wegen eines 500ers eine Exception wirft</span></pre>
           <div class="file-ref"><code>scada_client.py</code> — alle drei Funktionen</div>
         </div>
+
         <div class="concept">
-          <h4>Endlosschleife mit <code>asyncio.sleep</code></h4>
-          <p><code>while True: await poll_once(); await asyncio.sleep(15)</code> — der einfachste Weg, einen wiederkehrenden Hintergrund-Job zu bauen, ohne einen externen Scheduler (Cron, Celery) zu brauchen.</p>
+          <h4>Endlosschleife mit <code>asyncio.sleep</code> — die einfachste Lösung, bewusst</h4>
+          <p><code>while True: await poll_once(); await asyncio.sleep(15)</code> ist der einfachste denkbare Weg für einen wiederkehrenden Hintergrundjob — kein Cron, kein Celery, kein externer Scheduler-Prozess. Der <code>await</code> in <code>asyncio.sleep()</code> gibt (genau wie ein HTTP-Call) die Kontrolle an den Event-Loop zurück und blockiert daher nicht den Rest der Anwendung während der 15 Sekunden Wartezeit.</p>
+          <div class="scenario"><b>Grenze dieser einfachen Lösung</b>Liefe <code>integration-service</code> mehrfach (mehrere Container-Replicas für Ausfallsicherheit), würde jede Instanz unabhängig und parallel pollen — für eine Demo mit genau einer Instanz kein Problem, für einen horizontal skalierten Produktivbetrieb bräuchte man Koordination (z.B. nur eine aktive Instanz pollt, oder ein externer Scheduler übernimmt das Timing).</div>
           <div class="file-ref"><code>ingestion.py</code> — <code>poll_live_forever()</code></div>
         </div>
+
         <div class="concept">
-          <h4><code>@asynccontextmanager</code> für den App-Lebenszyklus</h4>
-          <p>Der Code <em>vor</em> <code>yield</code> läuft beim Start (Tabellen anlegen, Backfill, Poll-Task starten), der Code <em>nach</em> <code>yield</code> beim Herunterfahren (Task abbrechen) — FastAPIs Weg für Start-/Stop-Hooks.</p>
+          <h4><code>@asynccontextmanager</code> für den App-Lebenszyklus — Schritt für Schritt</h4>
+          <p><code>@asynccontextmanager</code> verwandelt eine ganz normale <code>async def</code>-Generatorfunktion mit genau einem <code>yield</code> in etwas, das FastAPI direkt als <code>lifespan</code>-Parameter akzeptiert.</p>
+          <pre class="code">@asynccontextmanager
+async def lifespan(app: FastAPI):
+    Base.metadata.create_all(bind=engine)   <span class="cm"># 1. Tabellen anlegen, falls nicht vorhanden</span>
+    await backfill_history()                <span class="cm"># 2. einmalig warten, bis 30 Tage Historie da sind</span>
+    _poll_task = asyncio.create_task(poll_live_forever())  <span class="cm"># 3. Hintergrund-Task STARTEN, nicht abwarten</span>
+    yield                                    <span class="cm"># 4. --- App läuft, bedient Requests ---</span>
+    _poll_task.cancel()                      <span class="cm"># 5. beim Herunterfahren sauber abbrechen</span></pre>
+          <p>Entscheidend ist Zeile 3: <code>asyncio.create_task(...)</code> <em>ohne</em> <code>await</code> davor. Mit <code>await</code> würde die Startsequenz für immer an dieser Stelle hängen bleiben, weil <code>poll_live_forever()</code> nie zurückkehrt (Endlosschleife) — die App käme nie bei <code>yield</code> an und würde nie anfangen, Requests zu bedienen. <code>create_task</code> stößt die Endlosschleife nur an und lässt sie <em>parallel</code> im Hintergrund weiterlaufen, während die Startsequenz sofort zu <code>yield</code> weiterspringt.</p>
           <div class="file-ref"><code>integration-service/app/main.py</code> — <code>lifespan()</code></div>
         </div>
       </div>
 
       <h3>Backend-Frameworks (FastAPI · SQLAlchemy · Pydantic)</h3>
       <div class="concepts">
+
         <div class="concept">
-          <h4>Pydantic <code>BaseModel</code></h4>
-          <p>Deklarative Datenklassen, die FastAPI automatisch für Validierung, JSON-Serialisierung <em>und</em> die Swagger-Dokumentation nutzt — ein Schema, drei Zwecke.</p>
+          <h4>Pydantic <code>BaseModel</code> — Validierung, nicht nur Struktur</h4>
+          <p>Eine Pydantic-Klasse wie <code>AssetOut(BaseModel)</code> sieht einem <code>@dataclass</code> ähnlich, tut aber beim Erzeugen einer Instanz aktiv etwas: sie <em>validiert und konvertiert</em>. Bekommt ein als <code>float</code> deklariertes Feld den String <code>"3.5"</code> übergeben, wandelt Pydantic das automatisch in <code>3.5</code> um — oder wirft einen klaren Validierungsfehler, wenn das nicht möglich ist.</p>
+          <p>FastAPI nutzt das doppelt: für eingehende Request-Parameter (automatische, aussagekräftige 422-Fehler bei falschem Typ, ganz ohne eigenen Prüfcode) und für <code>response_model=...</code> — die zurückgegebene Antwort wird auf das Schema zugeschnitten, Felder, die im ORM-Objekt zusätzlich existieren, aber nicht im Schema stehen, verschwinden aus der JSON-Antwort. Als Nebeneffekt entsteht daraus automatisch die interaktive Doku unter <code>/docs</code>.</p>
           <div class="file-ref"><code>schemas.py</code>, <code>scada-simulator/app/models.py</code></div>
         </div>
+
         <div class="concept">
-          <h4>SQLAlchemy 2.0 Declarative Mapping</h4>
-          <p><code>Mapped[str]</code> + <code>mapped_column(...)</code> verbindet eine Python-Klasse 1:1 mit einer DB-Tabelle, inklusive Typprüfung durch den Editor/Typchecker — <code>Asset.lat</code> ist garantiert ein <code>float</code>, nicht "irgendwas aus der DB".</p>
+          <h4>SQLAlchemy 2.0 Declarative Mapping — eine Klasse, zwei Bedeutungen</h4>
+          <p><code>asset_id: Mapped[str] = mapped_column(String, primary_key=True)</code> sagt zwei Dinge gleichzeitig: Python-seitig ist <code>asset.asset_id</code> ein <code>str</code> (Editor/Typchecker wissen das über <code>Mapped[str]</code>). DB-seitig wird daraus beim Anlegen der Tabelle eine Spalte <code>asset_id VARCHAR PRIMARY KEY</code> (über <code>mapped_column(String, primary_key=True)</code>).</p>
+          <p>Diese doppelte Information an einer Stelle ist der Kern eines ORM: man schreibt Python-Klassen, SQLAlchemy übersetzt sie in <code>CREATE TABLE</code>, und jede spätere Objektänderung (<code>asset.name = "neu"; session.commit()</code>) automatisch in <code>UPDATE</code> — ohne dass irgendwo im restlichen Code SQL-Text vorkommt.</p>
           <div class="file-ref"><code>integration-service/app/models.py</code></div>
         </div>
+
         <div class="concept">
-          <h4>Decorator-Routing (<code>@app.get(...)</code>)</h4>
-          <p>Die Funktion darunter wird nicht verändert, aber bei FastAPI als Handler für genau diesen Pfad registriert — deklarativ statt über eine zentrale Routing-Tabelle.</p>
-          <div class="file-ref">alle <code>main.py</code></div>
+          <h4>Decorator-Routing (<code>@app.get(...)</code>) — was ein Decorator wirklich tut</h4>
+          <p>Ein Decorator ist nur eine Funktion, die eine andere Funktion entgegennimmt und (meist) eine registrierte oder veränderte Version zurückgibt. <code>@app.get("/health")</code> über <code>def health():</code> ist gleichbedeutend mit <code>health = app.get("/health")(health)</code>.</p>
+          <p><code>app.get(...)</code> trägt die Funktion in eine interne Routing-Tabelle ein (Pfad → Handler) und gibt sie unverändert zurück — man kann <code>health()</code> trotzdem ganz normal wie eine Python-Funktion aufrufen und in einem Test direkt testen, ganz ohne laufenden Server.</p>
+          <div class="file-ref">alle <code>main.py</code>-Dateien</div>
         </div>
+
         <div class="concept">
-          <h4>Session-per-Request (Unit of Work)</h4>
-          <p>Jeder Request/Job holt sich am Anfang <code>get_session()</code> bzw. <code>SessionLocal()</code> und schließt sie am Ende in <code>finally: session.close()</code> — keine geteilte, langlebige DB-Verbindung.</p>
+          <h4>Session-per-Request — warum nicht eine geteilte Verbindung?</h4>
+          <p>Jede Interaktion mit der Datenbank — ein Dashboard-Request, ein Backfill-Durchlauf, ein einzelner Live-Poll — holt sich am Anfang eine frische <code>Session</code> über <code>get_session()</code>/<code>SessionLocal()</code> und schließt sie in einem <code>finally</code>-Block, egal ob der Code davor erfolgreich durchlief oder eine Exception warf.</p>
+          <p>Eine <code>Session</code> ist mehr als eine offene Verbindung: sie bildet eine Transaktionsgrenze (Änderungen bis zum <code>commit()</code> gehören zusammen oder werden gemeinsam verworfen) und einen Identity-Cache. Eine einzige, dauerhaft geteilte Session über alle Requests hinweg würde diese Isolation aufheben — ein halbfertiger Request könnte Änderungen eines anderen, noch nicht commiteten Requests sehen.</p>
           <div class="file-ref"><code>integration-service/app/main.py</code>, <code>ingestion.py</code></div>
         </div>
+
         <div class="concept">
           <h4>Idempotentes Schreiben (<code>ON CONFLICT DO NOTHING</code>)</h4>
-          <p>Backfill und Live-Poll können sich zeitlich überlappen — der Unique-Constraint auf <code>(asset_id, metric, timestamp)</code> plus <code>on_conflict_do_nothing</code> verhindert Duplikate, statt vorher mühsam zu prüfen "gibt's das schon?".</p>
+          <p><code>UniqueConstraint("asset_id", "metric", "timestamp")</code> in <code>models.py</code> erzwingt auf DB-Ebene: für dieselbe Anlage/Metrik/Zeitstempel-Kombination kann es nie zwei Zeilen geben. <code>sqlite_insert(Reading).values(rows).on_conflict_do_nothing(index_elements=[...])</code> sagt der Datenbank: versuche das Insert, und falls genau dieser Constraint verletzt würde, ignoriere den Konflikt still, statt einen Fehler zu werfen.</p>
+          <p>Das erspart eine explizite "existiert das schon?"-Prüfung im Python-Code vor jedem Schreiben — wichtig, weil sich Backfill (bis Zeitpunkt X) und der allererste Live-Poll (direkt danach) im Zeitfenster leicht überlappen können.</p>
           <div class="file-ref"><code>ingestion.py</code> — <code>_upsert_readings()</code></div>
         </div>
+
         <div class="concept">
-          <h4>Deterministischer Zufall über Hashing</h4>
-          <p><code>sha256(asset_id + zeitpunkt)</code> als "Zufallszahl" — dieselbe Anlage + derselbe Zeitpunkt ergeben <em>immer</em> denselben Wert, ganz ohne gespeicherten Zustand. Das ist, was Live- und History-Abfrage konsistent macht.</p>
+          <h4>Deterministischer Zufall über Hashing — die Mathematik dahinter</h4>
+          <p><code>hashlib.sha256(key).hexdigest()</code> erzeugt aus einem beliebigen Eingabe-String (hier: Anlagen-ID + Zeitstempel + ein Label wie <code>"gust"</code>, mit <code>|</code> verbunden) einen 64-stelligen Hex-String, der bei der kleinsten Änderung der Eingabe komplett anders aussieht, bei <em>identischer</em> Eingabe aber <em>immer identisch</em> ist.</p>
+          <pre class="code">def _stable_random(*parts: object) -> float:
+    key = "|".join(str(p) for p in parts).encode()
+    digest = hashlib.sha256(key).hexdigest()
+    return int(digest[:12], 16) / 16**12</pre>
+          <p><code>int(digest[:12], 16)</code> liest die ersten 12 Hex-Zeichen als Ganzzahl zur Basis 16 (Werte von 0 bis 16¹²-1). Die Division durch <code>16**12</code> normiert das Ergebnis auf einen Wert zwischen 0 und 1 — im Effekt eine "Zufallszahl", die reproduzierbar ist. Genau das erlaubt <code>/scada/live</code> (jetzt) und <code>/scada/history</code> (rückwirkend für denselben Zeitpunkt) exakt konsistente Werte zu liefern, ohne dass irgendwo eine Zeitreihe gespeichert werden müsste — der "Speicher" steckt vollständig in der mathematischen Funktion, nicht in einer Datenbank.</p>
           <div class="file-ref"><code>simulation.py</code> — <code>_stable_random()</code></div>
         </div>
       </div>
 
       <h3>TypeScript / React</h3>
       <div class="concepts">
+
         <div class="concept">
-          <h4>Interfaces als Vertrag mit dem Backend</h4>
-          <p>Jedes <code>interface</code> in <code>api/client.ts</code> spiegelt eine Pydantic-Klasse aus <code>schemas.py</code> von Hand — ändert sich ein Feld im Backend, muss man es hier manuell nachziehen (kein generierter Client in dieser Demo).</p>
+          <h4>TS <code>interface</code> als von Hand gepflegter Vertrag</h4>
+          <p>Ein TypeScript <code>interface</code> beschreibt nur die <em>Form</em> von Daten und existiert zur Laufzeit gar nicht mehr — reine Compile-Zeit-Information für Compiler und Editor. <code>interface Asset { ...; status: "online" | "offline" | "maintenance" | "fault"; }</code> in <code>api/client.ts</code> ist von Hand so geschrieben, dass es exakt der Pydantic-Klasse <code>AssetOut</code> in <code>schemas.py</code> entspricht — inklusive der exakten String-Literale für <code>status</code> (ein "String-Literal-Union-Typ", der genau diese vier Werte erlaubt).</p>
+          <div class="scenario"><b>Was bei Drift passiert</b>Ändert das Backend ein Feld, ohne dass jemand <code>client.ts</code> nachzieht, merkt TypeScript das nicht — anders als bei Pydantic ist diese Prüfung rein statisch und endet an der Backend-Grenze. Der Preis dafür, keinen automatisch generierten Client (z.B. aus der OpenAPI-Spezifikation unter <code>/openapi.json</code>) einzusetzen.</div>
           <div class="file-ref"><code>frontend/src/api/client.ts</code></div>
         </div>
+
         <div class="concept">
-          <h4>Generische Funktion <code>get&lt;T&gt;()</code></h4>
-          <p>Ein einziger Fetch-Wrapper für <em>alle</em> Endpunkte — der Aufrufer bestimmt über <code>&lt;T&gt;</code>, als welcher Typ die Antwort behandelt wird, ohne den Wrapper zu duplizieren.</p>
+          <h4>Generische Funktion <code>get&lt;T&gt;()</code> — wie TypeScript <code>T</code> ableitet</h4>
+          <p><code>T</code> ist ein Platzhalter für einen Typ, den TypeScript aus der <em>Verwendung</em> ableitet, nicht aus der Definition. Bei <code>get&lt;PortfolioSummary&gt;("/api/portfolio/summary")</code> setzt der Aufrufer <code>T = PortfolioSummary</code> explizit.</p>
+          <pre class="code">async function get<T>(path: string, params?: ...): Promise<T> {
+  const res = await fetch(url.toString());
+  if (!res.ok) throw new Error(`API-Fehler ${res.status} bei ${path}`);
+  return res.json();  <span class="cm">// res.json() liefert eigentlich "any" — die Promise&lt;T&gt;-Signatur
+  // BEHAUPTET nur, dass es ein T ist, ohne das zur Laufzeit zu prüfen</span>
+}</pre>
+          <p>Diese Behauptung wird — anders als bei Pydantic im Backend — nicht zur Laufzeit geprüft. Ein Feld, das das Backend umbenennt, würde hier erst als <code>undefined</code> im UI auffallen, nicht als Fehler beim Fetch selbst.</p>
           <div class="file-ref"><code>api/client.ts</code> Zeile 7</div>
         </div>
+
         <div class="concept">
-          <h4>Custom Hook <code>usePolling</code></h4>
-          <p>Kapselt "sofort laden, dann alle N ms erneut, beim Unmount aufräumen" an einer Stelle — jede Seite ruft nur noch <code>usePolling(fetcher, intervalMs)</code> auf, statt <code>useEffect</code>+<code>setInterval</code> elfmal zu wiederholen.</p>
+          <h4>Custom Hook <code>usePolling</code> — Zeile für Zeile</h4>
+          <pre class="code">export function usePolling<T>(fetcher: () => Promise<T>, intervalMs: number, deps: unknown[] = []) {
+  const [data, setData] = useState<T | null>(null);
+  const [error, setError] = useState<Error | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let cancelled = false;          <span class="cm">// 1: Flag für DIESEN Effekt-Durchlauf</span>
+    setLoading(true);
+
+    async function tick() {
+      try {
+        const result = await fetcher();
+        if (!cancelled) { setData(result); setError(null); }  <span class="cm">// 2: nur setzen, wenn noch aktuell</span>
+      } catch (err) {
+        if (!cancelled) setError(err as Error);
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    }
+
+    tick();                          <span class="cm">// 3: sofort einmal ausführen</span>
+    const id = setInterval(tick, intervalMs);  <span class="cm">// 4: danach im Intervall wiederholen</span>
+    return () => { cancelled = true; clearInterval(id); };  <span class="cm">// 5: Cleanup bei Unmount/Deps-Wechsel</span>
+  }, deps);
+
+  return { data, error, loading };
+}</pre>
+          <p>Zeile 5 ist der wichtigste Teil: React ruft diese Cleanup-Funktion automatisch auf, <em>bevor</em> ein neuer Effekt-Durchlauf beginnt (weil sich ein Wert in <code>deps</code> geändert hat) oder wenn die Komponente ganz verschwindet. Ohne <code>cancelled</code> würde <code>clearInterval</code> allein nur <em>zukünftige</em> Ticks stoppen — ein bereits laufender <code>fetch</code> würde trotzdem irgendwann seine Antwort zurückbekommen und versuchen, <code>setData</code> aufzurufen.</p>
           <div class="file-ref"><code>lib/usePolling.ts</code></div>
         </div>
+
         <div class="concept">
-          <h4><code>cancelled</code>-Flag im <code>useEffect</code>-Cleanup</h4>
-          <p>Verhindert, dass eine späte Antwort einer alten Anfrage (z.B. nach Filterwechsel) noch den State setzt, nachdem die Komponente längst neu geladen wurde — eine klassische React-Race-Condition-Falle.</p>
-          <div class="file-ref"><code>usePolling.ts</code> Zeile 15–29</div>
+          <h4><code>cancelled</code>-Flag — das konkrete Fehlerszenario</h4>
+          <p>Stell dir vor, im Service-Dashboard wechselt der Nutzer den Anlagentyp-Filter zweimal schnell hintereinander: erst "Windkraft", dann sofort "Photovoltaik". Für "Windkraft" läuft bereits ein <code>fetch</code>, während für "Photovoltaik" (neuer <code>useEffect</code>-Durchlauf, weil sich <code>assetType</code> in <code>deps</code> geändert hat) ein zweiter <code>fetch</code> gestartet wird.</p>
+          <div class="scenario"><b>Ohne das Flag</b>Kommt die <em>alte</em> Antwort ("Windkraft") <em>später</em> zurück als die neue ("Photovoltaik") — z.B. weil das Backend gerade unter Last war — würde sie den State mit Windkraft-Anlagen überschreiben, obwohl der Filter längst auf Photovoltaik steht. Die Tabelle würde für einen Moment falsche Daten zum aktuell gewählten Filter zeigen. Mit dem Flag: die Cleanup-Funktion des <em>alten</em> Effekt-Durchlaufs setzt <code>cancelled = true</code>, bevor der neue startet — die verspätete Windkraft-Antwort passiert ihr <code>if (!cancelled)</code> nicht mehr und wird stillschweigend verworfen.</div>
+          <div class="file-ref"><code>usePolling.ts</code> Zeile 15–29 · genutzt in <code>ServiceDashboard.tsx</code></div>
         </div>
       </div>
     </section>
@@ -464,36 +492,87 @@
 
       <div class="file-card" id="sim-portfolio">
         <div class="file-card-head"><span class="file-name">portfolio.py</span><span class="svc-tag scada">scada-simulator</span></div>
-        <p class="file-purpose">Definiert, welche 126 Anlagen "im Feld" existieren (110 WEA, 8 PV-Wechselrichterblöcke, 2 Speicher) und wo — reine Stammdaten, generiert mit festem Zufalls-Seed, damit das Portfolio über Neustarts identisch bleibt.</p>
-        <div class="concept-tags"><span class="ctag">@dataclass</span><span class="ctag">Enum</span><span class="ctag">random.Random(seed)</span><span class="ctag">assert-Invarianten</span></div>
-        <pre class="code"><span class="cm"># fester Seed -> reproduzierbares Portfolio über Neustarts hinweg</span>
-rng = random.Random(42)
-...
-assert sum(_TURBINES_PER_SITE.values()) == 110</pre>
+        <p class="file-purpose">Definiert, welche 126 Anlagen "im Feld" existieren (110 WEA auf 5 Standorten, 8 PV-Wechselrichterblöcke auf 4 Standorten, 2 Speicher) und wo — reine Stammdaten, generiert mit festem Zufalls-Seed, damit das Portfolio über Neustarts identisch bleibt.</p>
+
+        <div class="walkhead">Schritt für Schritt: <code>_build_assets()</code></div>
+        <div class="trace">
+          <div class="trace-step">
+            <div class="trace-n">1</div>
+            <div><h5><code>rng = random.Random(42)</code></h5><p>Ein eigener Zufallsgenerator mit <em>festem</em> Seed 42 — nicht das globale <code>random</code>-Modul. Dadurch erzeugt jeder Programmstart exakt dieselbe Abfolge von "zufälligen" Werten (Nennleistung, Rotordurchmesser je Turbine). Ohne festen Seed hätte jeder Neustart ein anderes Portfolio, und ein Techniker könnte sich nicht auf "Anlage WEA 07" als denselben Datensatz verlassen.</p></div>
+          </div>
+          <div class="trace-step">
+            <div class="trace-n">2</div>
+            <div><h5>Zwei verschachtelte Schleifen: Standort → Anlagenzahl</h5><p><code>for site_id, count in _TURBINES_PER_SITE.items(): for i in range(count):</code> — die äußere Schleife geht die 5 Windstandorte durch, die innere erzeugt pro Standort exakt so viele <code>Asset</code>-Objekte, wie in <code>_TURBINES_PER_SITE</code> hinterlegt ist (z.B. 26 für Parndorf). Die <code>assert sum(...) == 110</code>-Zeile direkt darüber ist eine Selbstprüfung: schlägt sie fehl, stimmt die Summe der Einzelwerte nicht mehr mit der dokumentierten Portfolio-Größe überein — ein Fehler, der sonst erst still im Dashboard als falsche Zahl auffallen würde.</p></div>
+          </div>
+          <div class="trace-step">
+            <div class="trace-n">3</div>
+            <div><h5>PV-Standorte werden in Wechselrichterblöcke aufgeteilt</h5><p><code>n_blocks = max(2, kwp // 10_000)</code> — ein 55&nbsp;MWp-PV-Park wird nicht als eine riesige Anlage modelliert, sondern in mehrere ~10&nbsp;MWp-Blöcke aufgeteilt. Das spiegelt echte SCADA-Granularität: ein PV-Park meldet Werte fast immer pro Wechselrichter oder Strang, nie als eine einzige Zahl fürs ganze Feld.</p></div>
+          </div>
+          <div class="trace-step">
+            <div class="trace-n">4</div>
+            <div><h5><code>seed=rng.randint(0, 1_000_000)</code> pro Anlage</h5><p>Jede Anlage bekommt zusätzlich einen eigenen Seed-Wert, der später in <code>simulation.py</code> in <code>_stable_random(asset.asset_id, ...)</code> einfließt — kombiniert mit der <code>asset_id</code> sorgt das dafür, dass zwei Anlagen desselben Typs am selben Standort trotzdem unterschiedliche, aber jeweils für sich stabile "Zufalls"-Muster zeigen (nicht alle 26 Turbinen in Parndorf haben identische Böigkeit zur exakt gleichen Sekunde).</p></div>
+          </div>
+        </div>
         <div class="talks-to"><b>wird gelesen von</b> <code>simulation.py</code>, <code>main.py</code> (dieses Service) · <b>entspricht in echt</b> den Stammdaten im SCADA-System des Anlagenherstellers</div>
       </div>
 
       <div class="file-card" id="sim-simulation">
         <div class="file-card-head"><span class="file-name">simulation.py</span><span class="svc-tag scada">scada-simulator</span></div>
-        <p class="file-purpose">Berechnet für jede Anlage/jeden Zeitpunkt plausible Messwerte (Windgeschwindigkeit, Leistung, SoC, Störungszustand) — deterministisch aus <code>(asset.seed, timestamp)</code>, ohne gespeicherten Zustand. Deshalb liefern Live- und History-Abfrage garantiert dieselben Werte für denselben Zeitpunkt.</p>
-        <div class="concept-tags"><span class="ctag">hashlib.sha256</span><span class="ctag">Trigonometrie-Modell</span><span class="ctag">Tuple-Rückgabe</span></div>
-        <pre class="code">def _stable_random(*parts: object) -> float:
-    key = "|".join(str(p) for p in parts).encode()
-    digest = hashlib.sha256(key).hexdigest()
-    return int(digest[:12], 16) / 16**12</pre>
+        <p class="file-purpose">Berechnet für jede Anlage/jeden Zeitpunkt plausible Messwerte — deterministisch aus <code>(asset.seed, timestamp)</code>, ohne gespeicherten Zustand. Live- und History-Abfrage liefern deshalb garantiert dieselben Werte für denselben Zeitpunkt.</p>
+
+        <div class="walkhead">Schritt für Schritt: <code>wind_speed_ms()</code></div>
+        <div class="trace">
+          <div class="trace-step">
+            <div class="trace-n">1</div>
+            <div><h5>Grundniveau je Standort</h5><p><code>base = 4.5 + 3.5 * _stable_random(site.site_id, "base_wind")</code> — jeder Standort bekommt ein eigenes, aber über die Zeit konstantes Basis-Windniveau zwischen 4.5 und 8&nbsp;m/s. Windpark Parndorf ist damit dauerhaft "windiger" oder "ruhiger" als Windpark Bruck, konsistent bei jeder Abfrage.</p></div>
+          </div>
+          <div class="trace-step">
+            <div class="trace-n">2</div>
+            <div><h5>Mehrtägiges "Wettermuster"</h5><p><code>day_index = ts.timestamp() / 86400</code> rechnet den Zeitstempel in Tage seit 1970 um (mit Nachkommastellen für die Uhrzeit). <code>weather = 1.0 + 0.9 * sin(2π · day_index / 4.2 + phase)</code> erzeugt daraus eine Sinuswelle mit ca. 4,2 Tagen Periode — simuliert mehrtägige Schönwetter-/Sturmphasen, statt dass der Wind von einer Stunde auf die nächste beliebig springt.</p></div>
+          </div>
+          <div class="trace-step">
+            <div class="trace-n">3</div>
+            <div><h5>Tagesgang + kurzfristiges Rauschen</h5><p><code>diurnal</code> macht Abend/Nacht leicht windiger als Mittag. <code>ten_min_bucket = int(ts.timestamp() // 600)</code> rundet den Zeitstempel auf 10-Minuten-Fenster ab — <em>innerhalb</em> eines Fensters liefert <code>_stable_random</code> denselben Rausch-Wert (die Böigkeit "springt" nicht bei jeder Sekunde), zwischen Fenstern ändert sie sich.</p></div>
+          </div>
+          <div class="trace-step">
+            <div class="trace-n">4</div>
+            <div><h5>Alles multiplizieren, auf 2 Nachkommastellen runden</h5><p><code>speed = base * weather * diurnal * noise</code> — vier unabhängige, aber jeweils deterministische Faktoren ergeben zusammen einen Wert, der auf den ersten Blick "zufällig" wirkt, aber bei jeder erneuten Abfrage desselben Zeitpunkts exakt reproduzierbar ist.</p></div>
+          </div>
+        </div>
+
+        <div class="walkhead">Schritt für Schritt: <code>wind_power_kw()</code> — die Leistungskurve</div>
+        <pre class="code">def wind_power_kw(asset: Asset, ws: float) -> float:
+    if ws < asset.cut_in_ms or ws >= asset.cut_out_ms:
+        return 0.0                                    <span class="cm"># zu wenig oder zu viel Wind -> Anlage steht</span>
+    if ws >= asset.rated_ws_ms:
+        return asset.rated_power_kw                    <span class="cm"># Nennwind erreicht -> volle Leistung, deckelt nach oben</span>
+    fraction = (ws - asset.cut_in_ms) / (asset.rated_ws_ms - asset.cut_in_ms)
+    return round(asset.rated_power_kw * fraction**3, 1) <span class="cm"># dazwischen: kubisch, nicht linear</span></pre>
+        <p style="font-size:0.88rem;color:var(--text-dim);max-width:78ch;">Die dritte Potenz (<code>fraction**3</code>) ist kein Zufall: die Leistung einer Windturbine hängt physikalisch von der <em>kinetischen Energie</em> im Wind ab, die proportional zur dritten Potenz der Windgeschwindigkeit wächst — eine Verdopplung des Winds (innerhalb des Teillastbereichs) verachtfacht theoretisch die verfügbare Leistung. Das ist der Grund, warum die Kurve zwischen Einschalt- und Nennwind so viel steiler verläuft als eine simple lineare Rampe es täte.</p>
+
         <div class="talks-to"><b>genutzt von</b> <code>main.py: read_live() / read_history()</code></div>
       </div>
 
       <div class="file-card" id="sim-models">
         <div class="file-card-head"><span class="file-name">models.py</span><span class="svc-tag scada">scada-simulator</span></div>
-        <p class="file-purpose">Pydantic-Schemas für die API-Antworten: <code>TagReading</code> (ein roher Messwert) und <code>AssetDescriptor</code> (Stammdaten-Eintrag) — bewusst im flachen "Tag-Format", wie ein echter OPC-UA-Server liefern würde.</p>
+        <p class="file-purpose">Pydantic-Schemas für die API-Antworten: <code>TagReading</code> (ein roher Messwert) und <code>AssetDescriptor</code> (Stammdaten-Eintrag) — bewusst im flachen "Tag-Format", wie ein echter OPC-UA-Server liefern würde, statt eines schön verschachtelten, anwendungsfreundlichen JSON-Objekts.</p>
         <div class="concept-tags"><span class="ctag">Pydantic BaseModel</span><span class="ctag">Union-Typ <code>float | str | None</code></span></div>
+        <p class="file-purpose">Warum flach statt verschachtelt? Ein echtes SCADA-/Historian-System kennt keine Vorstellung von "eine Anlage hat mehrere zusammengehörige Messwerte" — es liefert einen Strom einzelner (Anlage, Tag, Zeit, Wert)-Tupel. Diese Datei bildet das absichtlich nach, damit die eigentliche Übersetzungsarbeit sichtbar in <code>normalize.py</code> auf der anderen Seite passiert, statt sie hier "kostenlos" wegzumodellieren.</p>
         <div class="talks-to"><b>Response-Modell für</b> <code>main.py</code> · <b>Pendant im anderen Service</b> <code>integration-service/schemas.py</code> (anderes Schema, gleiche Rolle)</div>
       </div>
 
       <div class="file-card" id="sim-main">
         <div class="file-card-head"><span class="file-name">main.py</span><span class="svc-tag scada">scada-simulator</span></div>
-        <p class="file-purpose">FastAPI-App mit vier Endpunkten: <code>/scada/assets</code> (Stammdaten), <code>/scada/live</code> (Momentaufnahme), <code>/scada/history</code> (Zeitraum), <code>/health</code>. Reine Auslieferung — ruft nur <code>simulation.py</code>/<code>portfolio.py</code> auf, enthält selbst keine Logik.</p>
+        <p class="file-purpose">FastAPI-App mit vier Endpunkten: <code>/scada/assets</code> (Stammdaten), <code>/scada/live</code> (Momentaufnahme aller Anlagen zum aktuellen Zeitpunkt), <code>/scada/history</code> (Zeitraum in festem Raster), <code>/health</code>.</p>
+
+        <div class="walkhead">Schritt für Schritt: <code>read_history()</code></div>
+        <pre class="code">ts = start
+step = timedelta(minutes=interval_minutes)
+while ts <= end:
+    values = tag_values(asset, ts)      <span class="cm"># dieselbe Funktion wie bei /scada/live —</span>
+    ...                                   <span class="cm"># nur mit einem Zeitpunkt aus der Vergangenheit statt "jetzt"</span>
+    ts += step</pre>
+        <p style="font-size:0.88rem;color:var(--text-dim);max-width:78ch;">Diese Schleife ist der Beweis für das Grundprinzip aus <code>simulation.py</code>: es gibt keinen Unterschied im Code zwischen "aktuellen" und "historischen" Werten — beide rufen exakt dieselbe <code>tag_values()</code>-Funktion auf, nur mit einem anderen <code>ts</code>-Argument. Ein 30-Tage-Backfill mit stündlichem Raster ist technisch nichts anderes als 720 Aufrufe derselben deterministischen Funktion.</p>
         <div class="concept-tags"><span class="ctag">FastAPI-Decorators</span><span class="ctag">Query-Parameter</span><span class="ctag">HTTPException</span></div>
         <div class="talks-to"><b>wird aufgerufen von</b> <code>integration-service/scada_client.py</code> über REST</div>
       </div>
@@ -505,101 +584,232 @@ assert sum(_TURBINES_PER_SITE.values()) == 110</pre>
 
       <div class="file-card" id="int-config">
         <div class="file-card-head"><span class="file-name">config.py</span><span class="svc-tag integ">integration-service</span></div>
-        <p class="file-purpose">Zentrale Konfiguration über Umgebungsvariablen mit sinnvollen Defaults (SCADA-URL, DB-Pfad, Backfill-Tage, Poll-Takt, CO2-Faktor) — in <code>docker-compose.yml</code> überschrieben, lokal per Default nutzbar.</p>
+        <p class="file-purpose">Zentrale Konfiguration über Umgebungsvariablen mit sinnvollen Defaults. <code>os.environ.get("SCADA_BASE_URL", "http://localhost:8001")</code> liest zur Modul-Importzeit (also einmalig beim Programmstart) die Umgebungsvariable — in <code>docker-compose.yml</code> auf <code>http://scada-simulator:8001</code> gesetzt (Docker löst den Service-Namen intern auf), lokal ohne Docker fällt der Wert auf <code>localhost</code> zurück.</p>
+        <div class="scenario"><b>Warum das wichtig ist</b>Weil dieser Wert nur beim Programmstart einmal gelesen wird, ändert ein späteres <code>export SCADA_BASE_URL=...</code> im selben Terminal nichts mehr am bereits laufenden Prozess — man muss den Prozess neu starten, damit eine geänderte Umgebungsvariable wirkt.</div>
         <div class="concept-tags"><span class="ctag">os.environ.get(key, default)</span><span class="ctag">Modulkonstanten</span></div>
         <div class="talks-to"><b>gelesen von</b> <code>db.py</code>, <code>scada_client.py</code>, <code>ingestion.py</code>, <code>kpi.py</code></div>
       </div>
 
       <div class="file-card" id="int-db">
         <div class="file-card-head"><span class="file-name">db.py</span><span class="svc-tag integ">integration-service</span></div>
-        <p class="file-purpose">Baut die SQLAlchemy-Engine + Session-Factory auf Basis von <code>DATABASE_URL</code>. <code>check_same_thread: False</code> ist SQLite-spezifisch nötig, weil FastAPI Requests aus verschiedenen Threads bedienen kann.</p>
+        <p class="file-purpose">Baut die SQLAlchemy-Engine und die Session-Factory auf Basis von <code>DATABASE_URL</code>.</p>
+        <pre class="code">engine = create_engine(
+    DATABASE_URL,
+    connect_args={"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {},
+)
+SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)</pre>
+        <p style="font-size:0.88rem;color:var(--text-dim);max-width:78ch;"><code>check_same_thread: False</code> ist SQLite-spezifisch nötig: SQLite-Verbindungen sind standardmäßig nur in dem Thread nutzbar, der sie geöffnet hat — FastAPI kann Requests aber aus unterschiedlichen Threads bedienen. Diese Option schaltet die Prüfung ab (in Kombination mit dem Session-per-Request-Muster, das ohnehin jede Anfrage isoliert, ist das für diese Demo unbedenklich).</p>
         <div class="concept-tags"><span class="ctag">DeclarativeBase</span><span class="ctag">sessionmaker</span></div>
         <div class="talks-to"><b>Basis für</b> <code>models.py</code> (<code>Base</code>) · <b>genutzt von</b> <code>main.py</code>, <code>ingestion.py</code></div>
       </div>
 
       <div class="file-card" id="int-models">
         <div class="file-card-head"><span class="file-name">models.py</span><span class="svc-tag integ">integration-service</span></div>
-        <p class="file-purpose">Das <strong>eigene</strong> Datenmodell: <code>Asset</code>, <code>Reading</code> (eine Zeile pro Anlage/Metrik/Zeitstempel), <code>Alarm</code>, <code>MaintenanceTicket</code>. Kennt keine SCADA-Tag-Namen mehr — <code>active_power_kw</code> und <code>power_kw</code> landen hier beide unter der einen Metrik <code>power_kw</code>.</p>
+        <p class="file-purpose">Das <strong>eigene</strong> Datenmodell: <code>Asset</code>, <code>Reading</code> (eine Zeile pro Anlage/Metrik/Zeitstempel), <code>Alarm</code>, <code>MaintenanceTicket</code>. Kennt keine SCADA-Tag-Namen mehr — <code>active_power_kw</code> (WEA/PV) und <code>power_kw</code> (BESS) landen hier beide unter der einen Metrik <code>power_kw</code>.</p>
+        <p class="file-purpose"><code>Reading</code> ist bewusst eine einzige, generische Tabelle mit einer <code>metric</code>-Spalte (String) statt einer eigenen Spalte pro Messgröße (<code>wind_speed_ms</code>, <code>power_kw</code>, <code>soc_percent</code> als getrennte Spalten). Der Vorteil: ein neuer Anlagentyp mit einer komplett neuen Messgröße braucht keine Schema-Migration, nur einen neuen String-Wert in <code>metric</code>. Der Preis: die Datenbank kann nicht mehr selbst prüfen, ob <code>value</code> für <code>metric="soc_percent"</code> sinnvoll zwischen 0 und 100 liegt — das bliebe Aufgabe der Anwendungslogik.</p>
         <div class="concept-tags"><span class="ctag">Mapped / mapped_column</span><span class="ctag">UniqueConstraint</span><span class="ctag">ForeignKey</span><span class="ctag">Index</span></div>
         <div class="talks-to"><b>befüllt von</b> <code>ingestion.py</code> · <b>gelesen von</b> <code>kpi.py</code>, <code>alarms.py</code>, <code>predictive.py</code>, <code>main.py</code></div>
       </div>
 
       <div class="file-card" id="int-scadaclient">
         <div class="file-card-head"><span class="file-name">scada_client.py</span><span class="svc-tag integ">integration-service</span></div>
-        <p class="file-purpose">Dünner HTTP-Client — der <strong>einzige</strong> Ort im ganzen Projekt, der weiß, dass die SCADA-Quelle aktuell ein REST-Mock ist. Bei einer echten Anbindung (OPC-UA/Modbus) würde ausschließlich diese Datei ausgetauscht.</p>
+        <p class="file-purpose">Dünner HTTP-Client — der <strong>einzige</strong> Ort im ganzen Projekt, der weiß, dass die SCADA-Quelle aktuell ein REST-Mock ist. Bei einer echten Anbindung (OPC-UA/Modbus) würde ausschließlich diese Datei ausgetauscht, weil jede Funktion hier reine Python-Listen/Dicts zurückgibt — keine Rückgabetypen, die irgendwas über REST verraten.</p>
         <div class="concept-tags"><span class="ctag">async def / await</span><span class="ctag">httpx.AsyncClient</span><span class="ctag">async with</span></div>
         <pre class="code">async def fetch_live_readings() -> list[dict]:
     async with httpx.AsyncClient(base_url=SCADA_BASE_URL, timeout=30) as client:
         resp = await client.get("/scada/live")
-        resp.raise_for_status()
+        resp.raise_for_status()   <span class="cm"># wirft bei 4xx/5xx eine Exception statt still weiterzumachen</span>
         return resp.json()</pre>
+        <p style="font-size:0.88rem;color:var(--text-dim);max-width:78ch;"><code>resp.raise_for_status()</code> ist eine kleine, aber wichtige Zeile: ohne sie würde ein Serverfehler vom Mock-SCADA (z.B. 500) trotzdem <code>resp.json()</code> versuchen aufzurufen — je nach Inhalt entweder eine kryptische JSON-Parse-Exception oder, schlimmer, ein leeres/falsches Ergebnis, das sich als "es gab einfach keine Daten" tarnt statt als "der Request ist fehlgeschlagen".</p>
         <div class="talks-to"><b>spricht mit</b> <code>scada-simulator/main.py</code> über HTTP · <b>aufgerufen von</b> <code>ingestion.py</code></div>
       </div>
 
       <div class="file-card" id="int-normalize">
         <div class="file-card-head"><span class="file-name">normalize.py</span><span class="svc-tag integ">integration-service</span></div>
-        <p class="file-purpose">Übersetzt rohe SCADA-Tags (dicts) in zwei Listen: normalisierte Messwert-Zeilen für die <code>readings</code>-Tabelle, plus separate Alarm-Ereignisse (der <code>alarm_code</code>-Tag wird nicht als Zeitreihenwert gespeichert, sondern an die Alarm-Erkennung gereicht).</p>
-        <div class="concept-tags"><span class="ctag">Dict-Lookup-Tabelle</span><span class="ctag">Tuple aus 2 Listen</span></div>
+        <p class="file-purpose">Übersetzt rohe SCADA-Tags in zwei getrennte Listen.</p>
+        <div class="walkhead">Schritt für Schritt: <code>normalize_tag_readings()</code></div>
+        <div class="trace">
+          <div class="trace-step">
+            <div class="trace-n">1</div>
+            <div><h5>Zeitstempel angleichen</h5><p><code>if isinstance(ts, str): ts = datetime.fromisoformat(ts.replace("Z", "+00:00"))</code> — die SCADA-Antwort kommt als JSON, in dem Zeitstempel als ISO-Strings ankommen; Python muss sie explizit zurück in echte <code>datetime</code>-Objekte parsen, bevor irgendeine Zeitrechnung (z.B. für Backfill-Zeiträume) möglich ist. Das <code>Z</code> (UTC-Kennzeichen) wird durch <code>+00:00</code> ersetzt, weil Pythons <code>fromisoformat</code> in älteren Versionen kein <code>Z</code> direkt versteht.</p></div>
+          </div>
+          <div class="trace-step">
+            <div class="trace-n">2</div>
+            <div><h5>Alarmcode abzweigen</h5><p><code>if tag_name == ALARM_TAG_NAME:</code> — der <code>alarm_code</code>-Tag ist kein numerischer Messwert, den man in eine Zeitreihe schreiben würde; er landet stattdessen in einer separaten <code>alarm_events</code>-Liste, die später in <code>alarms.py</code> ausgewertet wird. <code>continue</code> springt direkt zur nächsten Rohzeile, ohne den restlichen Funktionskörper für diese Zeile auszuführen.</p></div>
+          </div>
+          <div class="trace-step">
+            <div class="trace-n">3</div>
+            <div><h5>Unbekannte Tags stillschweigend überspringen</h5><p><code>if metric is None: continue</code> — kommt ein Tag-Name vor, der nicht in <code>RAW_TAG_TO_METRIC</code> steht, wird die Zeile ignoriert statt einen Fehler zu werfen. Der Kommentar im Code weist selbst darauf hin, dass ein Produktivsystem das stattdessen loggen/alerten würde — für die Demo reicht "leise ignorieren".</p></div>
+          </div>
+          <div class="trace-step">
+            <div class="trace-n">4</div>
+            <div><h5>Normalisierte Zeile zusammenbauen</h5><p><code>{"asset_id": ..., "metric": metric, "timestamp": ts, "value": float(raw["value"]), "quality": raw.get("quality", "GOOD")}</code> — bewusst ein reines Dict, kein ORM-Objekt: <code>normalize.py</code> kennt <code>models.py</code> überhaupt nicht, die Umwandlung in ein <code>Reading</code>-Objekt passiert erst in <code>ingestion.py</code>.</p></div>
+          </div>
+        </div>
         <div class="talks-to"><b>aufgerufen von</b> <code>ingestion.py</code> (Backfill <em>und</em> Live-Poll — garantiert gleiches Schema)</div>
       </div>
 
       <div class="file-card" id="int-ingestion">
         <div class="file-card-head"><span class="file-name">ingestion.py</span><span class="svc-tag integ">integration-service</span></div>
-        <p class="file-purpose">Das Herzstück: <code>backfill_history()</code> lädt einmalig 30 Tage nach (übersprungen, falls schon Daten da sind), <code>poll_live_forever()</code> holt im 15-Sekunden-Takt aktuelle Werte, normalisiert, schreibt idempotent, wertet Alarme aus und synchronisiert Wartungstickets.</p>
+        <p class="file-purpose">Das Herzstück des Services: holt Daten, normalisiert, schreibt, wertet Alarme aus, synchronisiert Tickets.</p>
+
+        <div class="walkhead">Schritt für Schritt: <code>backfill_history()</code></div>
+        <div class="trace">
+          <div class="trace-step">
+            <div class="trace-n">1</div>
+            <div><h5>Schutz vor doppeltem Backfill</h5><p><code>existing = session.execute(select(Reading.id).limit(1)).first(); if existing is not None: return</code> — eine minimale Abfrage ("gibt es überhaupt irgendeine Zeile?") statt eine teure <code>COUNT(*)</code> über die ganze Tabelle. Läuft der Container neu, ohne dass das Docker-Volume gelöscht wurde, überspringt diese Zeile den kompletten, mehrminütigen Backfill.</p></div>
+          </div>
+          <div class="trace-step">
+            <div class="trace-n">2</div>
+            <div><h5>Stammdaten zuerst</h5><p><code>await sync_asset_master_data(session)</code> — erst müssen die 126 <code>Asset</code>-Zeilen existieren (Fremdschlüssel-Voraussetzung für <code>Reading.asset_id</code>), bevor überhaupt Messwerte dazu gespeichert werden können.</p></div>
+          </div>
+          <div class="trace-step">
+            <div class="trace-n">3</div>
+            <div><h5>Pro Anlage einzeln nachladen</h5><p><code>for i, asset in enumerate(assets, start=1): raw = await scada_client.fetch_history(asset.asset_id, start, end, BACKFILL_INTERVAL_MINUTES)</code> — 126 einzelne HTTP-Anfragen nacheinander (nicht parallel), jede mit 30 Tagen im Stundenraster. Der Fortschritts-Log alle 20 Anlagen (<code>if i % 20 == 0</code>) ist der Grund, warum man beim ersten Start "Backfill: 80/126 Anlagen geladen" im Log sieht.</p></div>
+          </div>
+          <div class="trace-step">
+            <div class="trace-n">4</div>
+            <div><h5>Bewusst OHNE Alarm-Auswertung</h5><p>Der lange Kommentar im Code erklärt eine echte Design-Entscheidung: würde man beim Backfill dieselbe Alarmlogik wie beim Live-Poll laufen lassen, würde <em>jeder</em> irgendwann in den letzten 30 Tagen aufgetretene Fehlercode fälschlich als "gerade jetzt aktiv" markiert — die Alarmliste im Dashboard wäre am ersten Tag mit Dutzenden längst behobener "Alarme" überflutet. Der erste Live-Poll direkt danach baut den korrekten, aktuellen Alarmstand auf.</p></div>
+          </div>
+        </div>
+
+        <div class="walkhead">Schritt für Schritt: <code>poll_once()</code></div>
+        <div class="trace">
+          <div class="trace-step">
+            <div class="trace-n">1</div>
+            <div><h5>Holen, normalisieren, schreiben</h5><p><code>raw = await scada_client.fetch_live_readings(); normalized, alarm_events = normalize_tag_readings(raw); _upsert_readings(session, normalized)</code> — ein Durchlauf für <em>alle</em> 126 Anlagen in einem einzigen HTTP-Request (anders als beim Backfill).</p></div>
+          </div>
+          <div class="trace-step">
+            <div class="trace-n">2</div>
+            <div><h5>Neueste Werte je Anlage bündeln</h5><p><code>latest_by_asset.setdefault(row["asset_id"], {})[row["metric"]] = row["value"]</code> — baut aus der flachen Liste normalisierter Zeilen ein verschachteltes Dict <code>{asset_id: {metric: value}}</code>. Grund: <code>evaluate_derived_alarms()</code> braucht z.B. <em>gleichzeitig</em> <code>wind_speed_ms</code> <em>und</em> <code>power_kw</code> derselben Anlage, um Minderleistung zu erkennen — als flache Liste wäre das umständlich zu prüfen.</p></div>
+          </div>
+          <div class="trace-step">
+            <div class="trace-n">3</div>
+            <div><h5>Fehler isolieren</h5><p>Der ganze Funktionskörper steckt in <code>try: ... except Exception: logger.exception(...) finally: session.close()</code> — ein einzelner fehlerhafter Poll-Durchlauf (z.B. weil der Mock-SCADA kurz nicht erreichbar war) crasht nicht den gesamten Hintergrund-Task, sondern wird geloggt; <code>poll_live_forever()</code> macht beim nächsten Intervall einfach weiter.</p></div>
+          </div>
+        </div>
         <div class="concept-tags"><span class="ctag">asyncio-Endlosschleife</span><span class="ctag">ON CONFLICT DO NOTHING</span><span class="ctag">try/except/finally</span><span class="ctag">Mengenoperationen (set)</span></div>
-        <pre class="code">async def poll_live_forever() -> None:
-    while True:
-        await poll_once()
-        await asyncio.sleep(POLL_INTERVAL_SECONDS)</pre>
         <div class="talks-to"><b>ruft auf</b> <code>scada_client</code>, <code>normalize</code>, <code>alarms</code>, <code>maintenance</code> · <b>gestartet von</b> <code>main.py: lifespan()</code></div>
       </div>
 
       <div class="file-card" id="int-alarms">
         <div class="file-card-head"><span class="file-name">alarms.py</span><span class="svc-tag integ">integration-service</span></div>
-        <p class="file-purpose">Zwei Alarmquellen: <code>source="scada"</code> (1:1 vom <code>alarm_code</code>-Tag übernommen) und <code>source="derived"</code> (eigene Schwellwertlogik, z.B. Minderleistung bei Wind/PV, SoC-Grenzen). Öffnet/schließt Alarme als kleine Zustandsmaschine — kein Duplikat, solange einer "active" ist.</p>
+        <p class="file-purpose">Zwei Alarmquellen: <code>source="scada"</code> (1:1 vom <code>alarm_code</code>-Tag übernommen) und <code>source="derived"</code> (eigene Schwellwertlogik der Integrationsschicht — Dinge, die die Anlage selbst nicht als Alarm markiert, aber betrieblich relevant sind, z.B. Minderleistung).</p>
+
+        <div class="walkhead">Schritt für Schritt: <code>_sync_alarm()</code> — die zentrale Open/Close-Zustandsmaschine</div>
+        <pre class="code">def _sync_alarm(session, asset_id, code, severity, message, source, ts, condition_true):
+    existing = session.execute(
+        select(Alarm).where(Alarm.asset_id == asset_id, Alarm.code == code,
+                             Alarm.source == source, Alarm.status == "active")
+    ).scalar_one_or_none()          <span class="cm"># 1: gibt es für GENAU diese Kombination schon einen offenen Alarm?</span>
+
+    if condition_true:
+        if existing is None:
+            session.add(Alarm(..., status="active", opened_at=ts))  <span class="cm"># 2a: neu öffnen</span>
+        <span class="cm"># 2b: existiert schon einer -> nichts tun, kein zweiter Alarm für dasselbe Problem</span>
+    else:
+        if existing is not None:
+            existing.status = "resolved"; existing.closed_at = ts   <span class="cm"># 3: Bedingung nicht mehr wahr -> schließen</span></pre>
+        <p style="font-size:0.88rem;color:var(--text-dim);max-width:78ch;"><code>scalar_one_or_none()</code> ist wichtig: es erwartet <em>höchstens eine</em> passende Zeile und gibt <code>None</code> zurück, falls keine existiert — würde man stattdessen <code>.first()</code> nutzen und es gäbe (durch einen Bug) versehentlich zwei offene Alarme derselben Kombination, würde das still das falsche Verhalten verschleiern statt es sichtbar zu machen.</p>
+        <p style="font-size:0.88rem;color:var(--text-dim);max-width:78ch;">Diese eine Funktion wird für <em>alle</em> Alarmarten wiederverwendet (SCADA-Störcodes, Minderleistung, SoC-Grenzen, Kommunikationsausfall) — jeweils nur mit einem anderen <code>code</code> und einer anderen <code>condition_true</code>-Berechnung aufgerufen. Das ist derselbe "eine Funktion, viele Aufrufer mit unterschiedlichen Parametern"-Gedanke wie bei der Dict-Lookup-Tabelle in <code>normalize.py</code>.</p>
+
+        <div class="walkhead">Warum <code>evaluate_derived_alarms()</code> pro Anlagentyp unterschiedlich rechnet</div>
+        <pre class="code">if asset.asset_type == "wind_turbine":
+    expected_fraction = min(1.0, (wind_speed / 12.0) ** 3) if wind_speed >= 3.5 else 0.0
+    expected_power = asset.rated_power_kw * expected_fraction
+    underperforming = state == STATE_ONLINE and expected_power > 200 and power < 0.4 * expected_power</pre>
+        <p style="font-size:0.88rem;color:var(--text-dim);max-width:78ch;">Dieselbe kubische Beziehung wie in <code>wind_power_kw()</code> (Wind hoch drei) wird hier <em>erneut</em> verwendet — aber diesmal, um aus der aktuellen Windgeschwindigkeit die <em>erwartete</em> Leistung grob zu schätzen und mit der <em>tatsächlich gemeldeten</em> Leistung zu vergleichen. Liegt die reale Leistung unter 40&nbsp;% des Erwarteten (und die Anlage meldet sich selbst als "online"), ist das ein Hinweis auf ein Problem, das die Anlage selbst nicht als Störung erkennt — z.B. eine verschmutzte oder leicht fehlausgerichtete Turbine.</p>
+
         <div class="concept-tags"><span class="ctag">scalar_one_or_none()</span><span class="ctag">Open/Close-Zustandsmuster</span></div>
         <div class="talks-to"><b>schreibt in</b> <code>Alarm</code>-Tabelle · <b>gelesen von</b> <code>maintenance.py</code>, <code>predictive.py</code>, <code>main.py</code></div>
       </div>
 
       <div class="file-card" id="int-maintenance">
         <div class="file-card-head"><span class="file-name">maintenance.py</span><span class="svc-tag integ">integration-service</span></div>
-        <p class="file-purpose">Erzeugt automatisch ein Wartungsticket pro neuem <em>SCADA</em>-Alarm (nicht pro <em>derived</em>-Alarm) — <code>linked_alarm_id</code> verhindert, dass bei jedem Poll ein weiteres Ticket für denselben Alarm entsteht.</p>
+        <p class="file-purpose">Erzeugt automatisch ein Wartungsticket pro neuem <em>SCADA</em>-Alarm (bewusst nicht pro <em>derived</em>-Alarm — eine Minderleistungs-Warnung soll noch kein automatisches Ticket auslösen, nur eine echte, vom Hersteller-System selbst gemeldete Störung).</p>
+        <div class="walkhead">Schritt für Schritt: <code>sync_tickets_from_alarms()</code></div>
+        <div class="trace">
+          <div class="trace-step">
+            <div class="trace-n">1</div>
+            <div><h5>Alle offenen SCADA-Alarme holen</h5><p><code>select(Alarm).where(Alarm.status == "active", Alarm.source == "scada")</code> — nur die "echten" Störmeldungen, kein <code>UNDERPERFORMANCE</code> oder <code>SOC_LOW</code>.</p></div>
+          </div>
+          <div class="trace-step">
+            <div class="trace-n">2</div>
+            <div><h5>Duplikat-Check über <code>linked_alarm_id</code></h5><p><code>existing = ...where(MaintenanceTicket.linked_alarm_id == alarm.id).scalar_one_or_none(); if existing is not None: continue</code> — läuft diese Funktion bei jedem Live-Poll (alle 15 Sekunden) erneut über denselben, weiterhin offenen Alarm, entsteht <em>kein</em> zweites Ticket. Ohne diesen Check hätte man nach einer Stunde 240 identische Tickets für dieselbe Störung.</p></div>
+          </div>
+          <div class="trace-step">
+            <div class="trace-n">3</div>
+            <div><h5>Ticket-Text aus Alarm-Kontext bauen</h5><p><code>title=f"Störung {name} ({asset_label}): {alarm.code}"</code> — der Titel wird aus Anlagenname, deutschem Typ-Label und Alarmcode zusammengesetzt, <code>priority="hoch" if alarm.severity == "kritisch" else "mittel"</code> übernimmt die Dringlichkeit direkt vom Alarm.</p></div>
+          </div>
+        </div>
         <div class="concept-tags"><span class="ctag">Idempotenz-Check über Fremdschlüssel</span></div>
         <div class="talks-to"><b>liest</b> <code>Alarm</code> · <b>schreibt</b> <code>MaintenanceTicket</code> · <b>aufgerufen von</b> <code>ingestion.py</code></div>
       </div>
 
       <div class="file-card" id="int-predictive">
         <div class="file-card-head"><span class="file-name">predictive.py</span><span class="svc-tag integ">integration-service</span></div>
-        <p class="file-purpose">Bewusst kein ML-Modell: zählt Störmeldungen + Minderleistungs-Warnungen der letzten 30 Tage zu einem Score, der auf <code>hoch/mittel/niedrig</code> gemappt wird.</p>
+        <p class="file-purpose">Bewusst kein ML-Modell — eine nachvollziehbare Regel.</p>
+        <pre class="code">fault_count = sum(1 for a in alarms if a.source == "scada")
+underperf_count = sum(1 for a in alarms if a.code == "UNDERPERFORMANCE")
+score = fault_count * 2 + underperf_count
+if score >= 5: level = "hoch"
+elif score >= 2: level = "mittel"
+else: level = "niedrig"</pre>
+        <p style="font-size:0.88rem;color:var(--text-dim);max-width:78ch;"><code>sum(1 for a in alarms if ...)</code> ist ein Generator-Ausdruck: für jedes Element, das die Bedingung erfüllt, wird eine <code>1</code> "erzeugt" und aufsummiert — im Effekt ein Zähler, ohne eine Zwischenliste anzulegen. Die Gewichtung <code>fault_count * 2</code> ist eine bewusste, im Code sichtbare Design-Entscheidung: eine echte SCADA-Störmeldung zählt doppelt so schwer wie eine bloße Minderleistungs-Warnung, weil sie direkt vom Herstellersystem kommt und seltener ein Fehlalarm ist.</p>
         <div class="concept-tags"><span class="ctag">sum() mit Generator-Ausdruck</span><span class="ctag">Score → Kategorie-Mapping</span></div>
         <div class="talks-to"><b>liest</b> <code>Alarm</code> · <b>aufgerufen von</b> <code>main.py: get_asset_detail()</code></div>
       </div>
 
       <div class="file-card" id="int-kpi">
         <div class="file-card-head"><span class="file-name">kpi.py</span><span class="svc-tag integ">integration-service</span></div>
-        <p class="file-purpose">Numerische Integration (Trapezregel) von Leistungs-Zeitreihen zu kWh, plus Verfügbarkeit, PV-Performance-Ratio und den täglichen Ertragsverlauf. Kennt nur noch <code>asset_id/metric/timestamp/value</code> — nie einen SCADA-Tag-Namen.</p>
+        <p class="file-purpose">Numerische Integration von Leistungs-Zeitreihen zu kWh, plus Verfügbarkeit, PV-Performance-Ratio und Ertragsverlauf. Kennt nur noch <code>asset_id/metric/timestamp/value</code> — nie einen SCADA-Tag-Namen.</p>
+
+        <div class="walkhead">Schritt für Schritt: <code>_integrate_trapezoidal()</code> — die Mathematik dahinter</div>
+        <pre class="code">for (t0, v0), (t1, v1) in zip(points, points[1:]):
+    dt_h = (t1 - t0).total_seconds() / 3600     <span class="cm"># Zeitabstand in Stunden</span>
+    if 0 < dt_h <= MAX_GAP_HOURS:
+        energy += (v0 + v1) / 2 * dt_h            <span class="cm"># Trapezfläche = Durchschnittsleistung × Zeit</span></pre>
+        <p style="font-size:0.88rem;color:var(--text-dim);max-width:78ch;">Leistung (kW) ist eine Momentaufnahme, Energie (kWh) ist Leistung <em>über Zeit integriert</em> — geometrisch die Fläche unter der Leistungskurve. Zwischen zwei Messpunkten kennt man die Kurve dazwischen nicht exakt, daher die Näherung: die Fläche eines Trapezes mit den beiden Messwerten als parallele Seiten und dem Zeitabstand als Höhe, <code>(v0 + v1) / 2 * dt_h</code> — der Mittelwert der beiden Leistungen mal die Zeit dazwischen. <code>MAX_GAP_HOURS = 3</code> verhindert, dass eine große Lücke (z.B. genau an der Grenze zwischen Backfill-Ende und erstem Live-Poll) fälschlich als "3 Stunden am Stück mit dieser Leistung gelaufen" gewertet wird.</p>
+
+        <div class="walkhead">Warum <code>performance_ratio_pv()</code> Einstrahlung UND Leistung braucht</div>
+        <pre class="code">actual_energy_kwh = _integrate_trapezoidal(power_points)
+irradiance_kwh_per_m2 = _integrate_trapezoidal(irradiance_points) / 1000.0
+reference_yield_kwh = irradiance_kwh_per_m2 * asset.capacity_kwp
+return actual_energy_kwh / reference_yield_kwh</pre>
+        <p style="font-size:0.88rem;color:var(--text-dim);max-width:78ch;">Performance Ratio ist die Standard-Kennzahl, um eine PV-Anlage <em>unabhängig vom Wetter</em> zu bewerten: "wie viel Energie kam tatsächlich raus, im Verhältnis zu dem, was bei dieser Einstrahlung unter Idealbedingungen (STC-Nennleistung) rauskommen müsste?" Zwei separate Trapez-Integrationen (eine für Leistung, eine für Einstrahlung) über denselben Zeitraum, dann ins Verhältnis gesetzt.</p>
+
         <div class="concept-tags"><span class="ctag">defaultdict</span><span class="ctag">zip() für Paar-Iteration</span><span class="ctag">verschachtelte Comprehensions</span></div>
         <div class="talks-to"><b>liest</b> <code>Reading</code>, <code>Asset</code> · <b>aufgerufen von</b> <code>main.py</code> (fast jeder <code>/api/...</code>-Endpunkt)</div>
       </div>
 
       <div class="file-card" id="int-schemas">
         <div class="file-card-head"><span class="file-name">schemas.py</span><span class="svc-tag integ">integration-service</span></div>
-        <p class="file-purpose">Response-Schemas der <strong>eigenen</strong> API — das, was Kunden-/Service-Dashboard tatsächlich zu sehen bekommen. <code>from_attributes = True</code> erlaubt, ein Pydantic-Schema direkt aus einem SQLAlchemy-Objekt zu bauen.</p>
+        <p class="file-purpose">Response-Schemas der <strong>eigenen</strong> API — das, was Kunden-/Service-Dashboard tatsächlich zu sehen bekommen.</p>
+        <p class="file-purpose"><code>class Config: from_attributes = True</code> erlaubt, ein Pydantic-Schema direkt aus einem SQLAlchemy-Objekt zu bauen (<code>AssetOut.model_validate(asset)</code> bzw. implizit über <code>response_model=</code> in FastAPI) — ohne das würde Pydantic standardmäßig nur aus einem Dict lesen, nicht aus Objekt-Attributen, und man müsste jedes Feld manuell aus dem ORM-Objekt in ein Dict kopieren.</p>
         <div class="concept-tags"><span class="ctag">Pydantic BaseModel</span><span class="ctag">Config.from_attributes</span></div>
         <div class="talks-to"><b>Response-Modell für</b> <code>main.py</code> · <b>Pendant im Frontend</b> <code>api/client.ts</code> (von Hand synchron gehalten)</div>
       </div>
 
       <div class="file-card" id="int-main">
         <div class="file-card-head"><span class="file-name">main.py</span><span class="svc-tag integ">integration-service</span></div>
-        <p class="file-purpose">FastAPI-App mit 9 Endpunkten (<code>/api/portfolio/summary</code>, <code>/api/assets</code>, <code>/api/alarms</code>, ...). <code>lifespan()</code> legt beim Start die Tabellen an, backfillt einmalig und startet den Poll-Task im Hintergrund — <em>bevor</em> der erste Request bedient wird.</p>
+        <p class="file-purpose">FastAPI-App mit 9 Endpunkten. <code>lifespan()</code> (siehe Konzept-Sektion oben) legt beim Start die Tabellen an, backfillt einmalig und startet den Poll-Task im Hintergrund — <em>bevor</em> der erste Request bedient wird.</p>
+
+        <div class="walkhead">Wie ein Endpunkt typischerweise aufgebaut ist: <code>get_asset_detail()</code></div>
+        <div class="trace">
+          <div class="trace-step">
+            <div class="trace-n">1</div>
+            <div><h5>Session holen, Anlage suchen</h5><p><code>asset = session.get(Asset, asset_id); if asset is None: raise HTTPException(404, ...)</code> — <code>session.get()</code> ist ein optimierter Primärschlüssel-Lookup (nutzt SQLAlchemys Identity-Map, bevor es überhaupt SQL absetzt).</p></div>
+          </div>
+          <div class="trace-step">
+            <div class="trace-n">2</div>
+            <div><h5>Mehrere KPI-Funktionen kombinieren</h5><p><code>kpi.availability(...)</code>, <code>kpi.asset_yield_kwh(...)</code>, <code>kpi.performance_ratio_pv(...)</code>, <code>predictive.asset_risk_hint(...)</code> — der Endpunkt selbst rechnet nichts, er ruft nur die spezialisierten Funktionen aus <code>kpi.py</code>/<code>predictive.py</code> auf und bündelt die Ergebnisse in ein <code>AssetDetailOut</code>.</p></div>
+          </div>
+          <div class="trace-step">
+            <div class="trace-n">3</div>
+            <div><h5><code>finally: session.close()</code></h5><p>Egal ob die Anlage gefunden wurde oder eine <code>HTTPException</code> vorher geworfen wurde — die Session wird immer geschlossen, damit keine offenen Datenbankverbindungen sich über viele Requests hinweg ansammeln.</p></div>
+          </div>
+        </div>
         <div class="concept-tags"><span class="ctag">@asynccontextmanager</span><span class="ctag">CORS-Middleware</span><span class="ctag">Session-per-Request</span></div>
-        <pre class="code">@asynccontextmanager
-async def lifespan(app: FastAPI):
-    Base.metadata.create_all(bind=engine)
-    await backfill_history()
-    _poll_task = asyncio.create_task(poll_live_forever())
-    yield
-    _poll_task.cancel()</pre>
         <div class="talks-to"><b>aufgerufen von</b> <code>frontend/api/client.ts</code> über REST</div>
       </div>
     </section>
@@ -610,45 +820,72 @@ async def lifespan(app: FastAPI):
 
       <div class="file-card" id="fe-main">
         <div class="file-card-head"><span class="file-name">main.tsx</span> <span class="file-name" style="opacity:.6">App.tsx</span><span class="svc-tag fe">frontend</span></div>
-        <p class="file-purpose"><code>main.tsx</code> hängt die React-App inklusive Router in den DOM. <code>App.tsx</code> definiert nur die drei Routen und wickelt alles in <code>Layout</code> (Header/Navigation bleibt über Seitenwechsel hinweg stehen).</p>
+        <p class="file-purpose"><code>main.tsx</code> ist der eigentliche Einstiegspunkt: <code>createRoot(...).render(...)</code> hängt die React-Anwendung in das <code>&lt;div id="root"&gt;</code> aus <code>index.html</code>. <code>BrowserRouter</code> umschließt alles und macht clientseitiges Routing möglich — ein Klick auf "Service-Dashboard" lädt <em>nicht</em> die Seite neu vom Server, sondern tauscht nur die sichtbare Komponente aus.</p>
+        <p class="file-purpose"><code>App.tsx</code> definiert nur die drei Routen und wickelt alles in <code>Layout</code>, das dadurch bei jedem Seitenwechsel erhalten bleibt (Header/Navigation flackern nicht neu auf).</p>
         <div class="concept-tags"><span class="ctag">React Router</span><span class="ctag">StrictMode</span></div>
         <pre class="code">&lt;Route path="/" element={&lt;CustomerDashboard /&gt;} /&gt;
 &lt;Route path="/service" element={&lt;ServiceDashboard /&gt;} /&gt;
-&lt;Route path="/service/assets/:assetId" element={&lt;AssetDetailPage /&gt;} /&gt;</pre>
+&lt;Route path="/service/assets/:assetId" element={&lt;AssetDetailPage /&gt;} /&gt;
+<span class="cm">// :assetId wird zum Platzhalter — AssetDetailPage liest ihn per useParams()</span></pre>
       </div>
 
       <div class="file-card" id="fe-theme">
         <div class="file-card-head"><span class="file-name">theme.ts</span><span class="svc-tag fe">frontend</span></div>
-        <p class="file-purpose">Eine Stelle für "welche Farbe/welches Label gehört zu Status X / Anlagentyp Y / Alarmschwere Z" — Komponenten importieren aus <code>theme.ts</code>, nie eine Farbe hart codiert.</p>
+        <p class="file-purpose">Eine Stelle für "welche Farbe/welches Label gehört zu Status X / Anlagentyp Y / Alarmschwere Z". <code>as const</code> nach jedem Objekt-Literal sagt TypeScript: behandle das nicht als "irgendein <code>Record&lt;string,string&gt;</code>", sondern merke dir die exakten Schlüssel und Werte als Literale — dadurch weiß TypeScript später, dass <code>ASSET_TYPE_LABEL["wind_turbine"]</code> gültig ist, aber <code>ASSET_TYPE_LABEL["solar"]</code> ein Tippfehler wäre, den der Compiler markiert.</p>
         <div class="concept-tags"><span class="ctag">as const</span><span class="ctag">CSS Custom Properties als Werte</span></div>
         <div class="talks-to"><b>genutzt von</b> praktisch jeder Komponente/Seite</div>
       </div>
 
       <div class="file-card" id="fe-client">
         <div class="file-card-head"><span class="file-name">api/client.ts</span><span class="svc-tag fe">frontend</span></div>
-        <p class="file-purpose">Der einzige Ort, der weiß, dass das Backend unter <code>VITE_API_BASE_URL</code> erreichbar ist. Ein generischer <code>get&lt;T&gt;()</code>-Wrapper plus manuell gepflegte TS-Interfaces, die 1:1 <code>schemas.py</code> entsprechen.</p>
+        <p class="file-purpose">Der einzige Ort, der weiß, dass das Backend unter <code>VITE_API_BASE_URL</code> erreichbar ist (Vite ersetzt <code>import.meta.env.VITE_API_BASE_URL</code> beim Build durch den tatsächlichen Wert aus der Umgebung).</p>
+        <div class="walkhead">Schritt für Schritt: <code>get&lt;T&gt;()</code></div>
+        <pre class="code">async function get<T>(path: string, params?: Record<string, string | number | undefined>): Promise<T> {
+  const url = new URL(BASE_URL + path);
+  if (params) {
+    for (const [key, value] of Object.entries(params)) {
+      if (value !== undefined) url.searchParams.set(key, String(value));  <span class="cm">// undefined = Filter weglassen</span>
+    }
+  }
+  const res = await fetch(url.toString());
+  if (!res.ok) throw new Error(`API-Fehler ${res.status} bei ${path}`);
+  return res.json();
+}</pre>
+        <p style="font-size:0.88rem;color:var(--text-dim);max-width:78ch;">Die Prüfung <code>if (value !== undefined)</code> ist der Grund, warum <code>api.getAssets({ asset_type: assetType || undefined, ... })</code> im Service-Dashboard funktioniert: ein leerer Filter ("Alle Anlagentypen") wird zu <code>undefined</code> und landet dadurch gar nicht erst als Query-Parameter in der URL, statt als <code>?asset_type=</code> (leerer String) ans Backend zu gehen.</p>
         <div class="concept-tags"><span class="ctag">Generics <code>&lt;T&gt;</code></span><span class="ctag">fetch + URLSearchParams</span></div>
         <div class="talks-to"><b>spricht mit</b> <code>integration-service/main.py</code> über HTTP · <b>genutzt von</b> allen drei <code>pages/*</code></div>
       </div>
 
       <div class="file-card" id="fe-lib">
         <div class="file-card-head"><span class="file-name">lib/usePolling.ts</span> <span class="file-name" style="opacity:.6">lib/time.ts</span><span class="svc-tag fe">frontend</span></div>
-        <p class="file-purpose"><code>usePolling</code> ist der Custom Hook, den jede Seite für "Daten holen + alle N Sekunden aktualisieren" nutzt. <code>parseUtc</code> behebt, dass SQLite-Zeitstempel ohne Zeitzone rauskommen und JS sie sonst fälschlich als lokale Zeit läse.</p>
-        <div class="concept-tags"><span class="ctag">Custom Hook</span><span class="ctag">useEffect-Cleanup</span></div>
+        <p class="file-purpose"><code>usePolling</code> ist im Konzept-Abschnitt oben komplett zeilenweise durchgegangen. <code>parseUtc</code> löst ein subtileres Problem:</p>
+        <pre class="code">export function parseUtc(iso: string): Date {
+  const withZ = iso.endsWith("Z") || /[+-]\d{2}:\d{2}$/.test(iso) ? iso : `${iso}Z`;
+  return new Date(withZ);
+}</pre>
+        <p style="font-size:0.88rem;color:var(--text-dim);max-width:78ch;">SQLite kennt keine echten zeitzonen-bewussten Timestamps — ein aus der DB gelesener Zeitstempel kommt als "naiver" ISO-String ohne <code>Z</code> oder Offset an (z.B. <code>"2026-07-13T14:30:00"</code>), obwohl er intern durchgehend UTC ist. <code>new Date("2026-07-13T14:30:00")</code> würde JavaScript aber als <em>lokale</em> Zeit interpretieren — auf einem Rechner in Wien (UTC+2) wäre das plötzlich zwei Stunden verschoben. Die Regex prüft, ob der String schon ein <code>Z</code> oder ein explizites Offset (<code>+02:00</code>) hat; falls nicht, wird <code>Z</code> angehängt, <em>bevor</em> <code>new Date()</code> ihn interpretiert.</p>
+        <div class="concept-tags"><span class="ctag">Custom Hook</span><span class="ctag">useEffect-Cleanup</span><span class="ctag">Regex-Zeitzonenprüfung</span></div>
         <div class="talks-to"><b>genutzt von</b> allen <code>pages/*</code> und <code>components/HistoryChart, ServiceDashboard</code></div>
       </div>
 
       <div class="file-card" id="fe-components">
         <div class="file-card-head"><span class="file-name">components/*</span><span class="svc-tag fe">frontend</span></div>
-        <p class="file-purpose">Reine Darstellungsbausteine ohne eigenes Daten-Fetching: <code>StatCard</code> (Kennzahl-Kachel), <code>Badges</code> (Status-/Schwere-Pills), <code>YieldChart</code> (gestapeltes Balkendiagramm, Recharts), <code>HistoryChart</code> (Linienchart), <code>PortfolioMap</code> (Leaflet-Karte), <code>Layout</code> (Header/Navigation/Footer).</p>
+        <p class="file-purpose">Reine Darstellungsbausteine ohne eigenes Daten-Fetching — sie bekommen alles über Props und wissen nichts von <code>usePolling</code> oder der API.</p>
+        <p class="file-purpose"><strong><code>StatCard</code></strong>: die simpelste Komponente — Label, Wert, optionales Sublabel/Akzentfarbe. Wird für praktisch jede Kennzahl im ganzen Projekt wiederverwendet, von "Ertrag heute" bis "Performance Ratio".</p>
+        <p class="file-purpose"><strong><code>Badges</code></strong> (<code>StatusBadge</code>, <code>SeverityBadge</code>): beide folgen demselben Muster — ein <code>status</code>/<code>severity</code>-Wert wird über <code>theme.ts</code> in Farbe + deutsches Label übersetzt, gerendert als kleiner Punkt + Pille. Der TypeScript-Typ <code>AssetStatus</code>/<code>Severity</code> (aus <code>theme.ts</code>) verhindert, dass man aus Versehen einen nicht existierenden Status übergibt.</p>
+        <p class="file-purpose"><strong><code>YieldChart</code></strong>: gestapeltes Balkendiagramm (Recharts <code>BarChart</code> mit <code>stackId="yield"</code> auf allen drei <code>Bar</code>-Elementen). Die Reihenfolge <code>SERIES_ORDER = ["wind_turbine", "pv_park", "bess"]</code> ist bewusst fix und wird nie nach Wert umsortiert — sonst würde sich die Bedeutung einer Farbe je nach Tag ändern, was ein Diagramm im Zeitverlauf sofort unlesbar macht.</p>
+        <p class="file-purpose"><strong><code>HistoryChart</code></strong>: einfaches Linienchart, <code>isAnimationActive={false}</code> verhindert, dass bei jedem 15-Sekunden-Poll die Linie neu "einfliegt" statt sich einfach zu aktualisieren.</p>
+        <p class="file-purpose"><strong><code>PortfolioMap</code></strong>: React-Leaflet-Karte, ein <code>CircleMarker</code> pro Standort. <code>radiusForSite()</code> skaliert die Kreisgröße nach Anlagenanzahl, <code>fillOpacity: allOnline ? 0.55 : 0.3</code> macht Standorte mit mindestens einer Offline-Anlage optisch blasser — Statusinformation steckt hier bewusst sowohl in Farbe als auch in Deckkraft, nicht nur im Popup-Text.</p>
         <div class="concept-tags"><span class="ctag">Recharts</span><span class="ctag">React-Leaflet</span><span class="ctag">Props statt eigenem State</span></div>
         <div class="talks-to"><b>bekommen Daten von</b> den <code>pages/*</code>, holen selbst nichts</div>
       </div>
 
       <div class="file-card" id="fe-pages">
         <div class="file-card-head"><span class="file-name">pages/*</span><span class="svc-tag fe">frontend</span></div>
-        <p class="file-purpose"><code>CustomerDashboard</code> (Portfolio-KPIs + Karte + Ertragschart), <code>ServiceDashboard</code> (Alarme, Tickets, filterbare Anlagentabelle), <code>AssetDetailPage</code> (Live-Werte, Verlaufschart mit Metrik-/Zeitraum-Umschalter, Predictive-Hinweis) — jede Seite kombiniert <code>usePolling</code> + <code>api.*</code> + Komponenten.</p>
-        <div class="concept-tags"><span class="ctag">useParams (Routen-Parameter)</span><span class="ctag">useState für Filter</span></div>
+        <p class="file-purpose"><strong><code>CustomerDashboard</code></strong>: ruft drei unabhängige <code>usePolling</code>-Instanzen mit unterschiedlichem Takt auf — Portfolio-Summary und Standorte alle 15&nbsp;Sekunden, der 30-Tage-Ertragsverlauf nur alle 60&nbsp;Sekunden (er ändert sich naturgemäß langsamer, ein häufigeres Nachladen wäre verschwendete Anfragen).</p>
+        <p class="file-purpose"><strong><code>ServiceDashboard</code></strong>: hält Filter (<code>assetType</code>, <code>status</code>, <code>search</code>) als eigenen <code>useState</code>. Diese drei Werte stehen als <code>deps</code>-Array in <code>usePolling(..., [assetType, status, search])</code> — ändert sich einer davon, erkennt Reacts <code>useEffect</code> das (per Referenzvergleich der Array-Einträge) und startet einen neuen Fetch mit den neuen Filterwerten, ganz ohne dass die Seite das explizit "anstoßen" müsste.</p>
+        <p class="file-purpose"><strong><code>AssetDetailPage</code></strong>: liest die Anlagen-ID aus der URL (<code>useParams&lt;{ assetId: string }&gt;()</code>), hält zusätzlich <code>metric</code> und <code>hours</code> als <code>useState</code> für die Chart-Umschalter. Auch hier stehen beide in den <code>deps</code> von <code>usePolling</code> für die Verlaufsdaten — ein Klick auf "7 Tage" löst also denselben Mechanismus aus wie ein Filterwechsel im Service-Dashboard.</p>
+        <div class="concept-tags"><span class="ctag">useParams (Routen-Parameter)</span><span class="ctag">useState für Filter</span><span class="ctag">deps-Array steuert Re-Fetch</span></div>
         <div class="talks-to"><b>rufen auf</b> <code>api/client.ts</code> · <b>rendern</b> <code>components/*</code></div>
       </div>
     </section>
@@ -660,15 +897,15 @@ async def lifespan(app: FastAPI):
       <div class="trace">
         <div class="trace-step">
           <div class="trace-n">1</div>
-          <div><h5>simulation.py: wind_speed_ms(asset, ts)</h5><p>Berechnet deterministisch aus Standort-Basiswind, mehrtägigem "Wettermuster" und Böigkeits-Rauschen einen Wert wie <code>7.3</code> m/s für genau diesen Zeitpunkt.</p></div>
+          <div><h5>simulation.py: wind_speed_ms(asset, ts)</h5><p>Berechnet deterministisch aus Standort-Basiswind, mehrtägigem Wettermuster und Böigkeits-Rauschen einen Wert wie <code>7.3</code> m/s für genau diesen Zeitpunkt — siehe die Schritt-für-Schritt-Erklärung weiter oben bei <code>sim-simulation</code>.</p></div>
         </div>
         <div class="trace-step">
           <div class="trace-n">2</div>
-          <div><h5>scada-simulator/main.py: read_live()</h5><p>Ruft <code>tag_values()</code> für alle Anlagen auf und liefert eine flache Liste von <code>TagReading</code>-Objekten über <code>GET /scada/live</code> aus — <code>{"asset_id": "wf-parndorf-wtg-07", "tag_name": "wind_speed_ms", "value": 7.3, ...}</code>.</p></div>
+          <div><h5>scada-simulator/main.py: read_live()</h5><p>Ruft <code>tag_values()</code> für alle Anlagen auf und liefert eine flache Liste von <code>TagReading</code>-Objekten über <code>GET /scada/live</code> aus — <code>{"asset_id": "wf-parndorf-wtg-07", "tag_name": "wind_speed_ms", "value": 7.3, "quality": "GOOD"}</code>.</p></div>
         </div>
         <div class="trace-step">
           <div class="trace-n">3</div>
-          <div><h5>integration-service/scada_client.py: fetch_live_readings()</h5><p>Holt diese Liste per HTTP ab — <em>ohne</em> zu wissen, was ein "Windrad" ist, nur "irgendein JSON von der SCADA-URL".</p></div>
+          <div><h5>integration-service/scada_client.py: fetch_live_readings()</h5><p>Holt diese Liste per <code>async with httpx.AsyncClient(...)</code> ab — ohne zu wissen, was ein "Windrad" ist, nur "irgendein JSON von der SCADA-URL".</p></div>
         </div>
         <div class="trace-step">
           <div class="trace-n">4</div>
@@ -680,19 +917,19 @@ async def lifespan(app: FastAPI):
         </div>
         <div class="trace-step">
           <div class="trace-n">6</div>
-          <div><h5>ingestion.py: _upsert_readings()</h5><p>Schreibt die Zeile idempotent in die <code>readings</code>-Tabelle. Gleichzeitig prüft <code>evaluate_derived_alarms()</code> in <code>alarms.py</code>, ob "viel Wind, aber wenig Leistung" zutrifft (<code>UNDERPERFORMANCE</code>-Alarm).</p></div>
+          <div><h5>ingestion.py: _upsert_readings()</h5><p>Schreibt die Zeile idempotent (<code>ON CONFLICT DO NOTHING</code>) in die <code>readings</code>-Tabelle. Gleichzeitig prüft <code>evaluate_derived_alarms()</code> in <code>alarms.py</code>, ob "viel Wind, aber wenig Leistung" zutrifft — dafür wird <em>derselbe</em> Wert <code>7.3</code> nochmal aus <code>latest_by_asset</code> gelesen, diesmal um die erwartete Leistung zu schätzen und mit der gemeldeten zu vergleichen.</p></div>
         </div>
         <div class="trace-step">
           <div class="trace-n">7</div>
-          <div><h5>frontend: AssetDetailPage.tsx</h5><p>Ruft alle 15 Sekunden <code>api.getAssetHistory(assetId, "wind_speed_ms", 24)</code> über <code>usePolling</code> auf.</p></div>
+          <div><h5>frontend: AssetDetailPage.tsx</h5><p>Ruft alle 15 Sekunden <code>api.getAssetHistory(assetId, "wind_speed_ms", 24)</code> über <code>usePolling</code> auf — ausgelöst entweder automatisch durch den Intervall-Timer oder sofort neu, wenn der Nutzer im Metrik-Umschalter auf "Windgeschwindigkeit" klickt (weil sich <code>metric</code> in den <code>deps</code> ändert).</p></div>
         </div>
         <div class="trace-step">
           <div class="trace-n">8</div>
-          <div><h5>integration-service/main.py: get_asset_history()</h5><p>Fragt <code>readings</code> gefiltert nach <code>asset_id</code>, <code>metric="wind_speed_ms"</code> und Zeitfenster ab, gibt eine Liste <code>{timestamp, value}</code> zurück.</p></div>
+          <div><h5>integration-service/main.py: get_asset_history()</h5><p>Fragt <code>readings</code> gefiltert nach <code>asset_id</code>, <code>metric="wind_speed_ms"</code> und Zeitfenster ab, gibt eine Liste <code>{timestamp, value}</code> zurück — als reines <code>HistoryPointOut</code>-Pydantic-Schema, nicht als rohes SQLAlchemy-Objekt.</p></div>
         </div>
         <div class="trace-step">
           <div class="trace-n">9</div>
-          <div><h5>frontend: HistoryChart.tsx</h5><p>Bekommt die Liste als Props, <code>parseUtc()</code> korrigiert die Zeitzone, Recharts zeichnet die Linie — fertig ist der Chart, den der Techniker sieht.</p></div>
+          <div><h5>frontend: HistoryChart.tsx</h5><p>Bekommt die Liste als Props, <code>parseUtc()</code> korrigiert die Zeitzone jedes Zeitstempels, Recharts zeichnet die Linie — fertig ist der Chart, den der Techniker im Browser sieht, sieben Übersetzungsschritte nach der ursprünglichen Berechnung in <code>simulation.py</code>.</p></div>
         </div>
       </div>
     </section>
