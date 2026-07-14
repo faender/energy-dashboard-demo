@@ -13,9 +13,16 @@ export function usePolling<T>(fetcher: () => Promise<T>, intervalMs: number, dep
 
   useEffect(() => {
     let cancelled = false;
+    let inFlight = false;
     setLoading(true);
 
     async function tick() {
+      // Läuft der vorherige Request noch (langsames Backend), keinen weiteren
+      // draufstapeln - sonst sammeln sich bei jedem Intervall mehr offene
+      // Requests an, was das Backend zusätzlich belastet und es noch
+      // langsamer macht.
+      if (inFlight) return;
+      inFlight = true;
       try {
         const result = await fetcher();
         if (!cancelled) {
@@ -25,6 +32,7 @@ export function usePolling<T>(fetcher: () => Promise<T>, intervalMs: number, dep
       } catch (err) {
         if (!cancelled) setError(err as Error);
       } finally {
+        inFlight = false;
         if (!cancelled) setLoading(false);
       }
     }

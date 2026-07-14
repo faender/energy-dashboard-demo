@@ -20,6 +20,8 @@ from sqlalchemy import func, select
 
 from . import kpi, predictive
 from .alarms import STATE_FAULT, STATE_MAINTENANCE, STATE_OFFLINE, STATE_ONLINE
+from .cache import cached
+from .config import DATABASE_URL, POLL_INTERVAL_SECONDS
 from .db import Base, engine, get_session
 from .ingestion import backfill_history, poll_live_forever
 from .models import Alarm, Asset, MaintenanceTicket, Reading
@@ -40,6 +42,12 @@ logging.basicConfig(level=logging.INFO)
 STATE_LABEL = {STATE_ONLINE: "online", STATE_OFFLINE: "offline", STATE_MAINTENANCE: "maintenance", STATE_FAULT: "fault"}
 SEVERITY_ORDER = {"kritisch": 0, "warnung": 1, "info": 2}
 
+# Die zugrunde liegenden Daten ändern sich ohnehin nur im Takt des
+# Live-Pollers - ein Cache-TTL knapp darunter hält die Dashboards aktuell,
+# entkoppelt die teure KPI-Berechnung aber von der Anzahl gleichzeitig
+# pollender Clients/Tabs.
+KPI_CACHE_TTL_SECONDS = max(5, POLL_INTERVAL_SECONDS - 2)
+
 _poll_task: asyncio.Task | None = None
 
 
@@ -52,6 +60,24 @@ async def lifespan(app: FastAPI):
     yield
     if _poll_task:
         _poll_task.cancel()
+        # Nicht auf den Task warten: er kann gerade in einem Worker-Thread
+        # stecken (asyncio.to_thread), dessen Cancel erst nach Abschluss des
+        # laufenden DB-Ticks greift - ein await hier kann den Shutdown lange
+        # genug blockieren, dass Docker per SIGKILL abbricht, bevor der
+        # Checkpoint unten überhaupt läuft.
+
+    # Bestmöglicher Checkpoint beim Herunterfahren, mit kurzem eigenen
+    # Timeout: startet die WAL-Datei bei jedem Neustart wieder klein statt
+    # sich über mehrere Tage Nutzung aufzusummieren. Läuft der Poller
+    # ausnahmsweise noch, wird einfach übersprungen statt den Shutdown zu
+    # riskieren - das ist unkritisch, der nächste Start räumt es dann auf.
+    if DATABASE_URL.startswith("sqlite"):
+        try:
+            with engine.connect() as conn:
+                conn.exec_driver_sql("PRAGMA busy_timeout=2000")
+                conn.exec_driver_sql("PRAGMA wal_checkpoint(TRUNCATE)")
+        except Exception:
+            logging.getLogger("main").warning("Checkpoint beim Herunterfahren übersprungen (DB beschäftigt)")
 
 
 app = FastAPI(
@@ -90,54 +116,63 @@ def _asset_to_out(asset: Asset, power: dict, state: dict, alarm_counts: dict) ->
 
 @app.get("/api/portfolio/summary", response_model=PortfolioSummaryOut, tags=["Portfolio"])
 def get_portfolio_summary():
-    session = get_session()
-    try:
-        return kpi.portfolio_summary(session)
-    finally:
-        session.close()
+    def compute():
+        session = get_session()
+        try:
+            return kpi.portfolio_summary(session)
+        finally:
+            session.close()
+
+    return cached("portfolio_summary", KPI_CACHE_TTL_SECONDS, compute)
 
 
 @app.get("/api/kpi/yield-series", response_model=list[YieldSeriesPointOut], tags=["Portfolio"])
 def get_yield_series(days: int = Query(default=30, ge=1, le=90)):
-    session = get_session()
-    try:
-        return kpi.yield_series(session, days=days)
-    finally:
-        session.close()
+    def compute():
+        session = get_session()
+        try:
+            return kpi.yield_series(session, days=days)
+        finally:
+            session.close()
+
+    return cached(f"yield_series:{days}", KPI_CACHE_TTL_SECONDS, compute)
 
 
 @app.get("/api/sites", response_model=list[SiteOut], tags=["Portfolio"])
 def get_sites():
-    session = get_session()
-    try:
-        assets = session.execute(select(Asset)).scalars().all()
-        state = kpi.latest_state_by_asset(session)
+    def compute():
+        session = get_session()
+        try:
+            assets = session.execute(select(Asset)).scalars().all()
+            state = kpi.latest_state_by_asset(session)
 
-        by_site: dict[str, list[Asset]] = {}
-        for a in assets:
-            by_site.setdefault(a.site_id, []).append(a)
+            by_site: dict[str, list[Asset]] = {}
+            for a in assets:
+                by_site.setdefault(a.site_id, []).append(a)
 
-        result = []
-        for site_id, site_assets in by_site.items():
-            first = site_assets[0]
-            online = sum(
-                1 for a in site_assets
-                if a.asset_id in state and int(state[a.asset_id][1]) == STATE_ONLINE
-            )
-            result.append(
-                SiteOut(
-                    site_id=site_id,
-                    site_name=first.site_name,
-                    asset_type=first.asset_type,
-                    lat=sum(a.lat for a in site_assets) / len(site_assets),
-                    lon=sum(a.lon for a in site_assets) / len(site_assets),
-                    asset_count=len(site_assets),
-                    online_count=online,
+            result = []
+            for site_id, site_assets in by_site.items():
+                first = site_assets[0]
+                online = sum(
+                    1 for a in site_assets
+                    if a.asset_id in state and int(state[a.asset_id][1]) == STATE_ONLINE
                 )
-            )
-        return result
-    finally:
-        session.close()
+                result.append(
+                    SiteOut(
+                        site_id=site_id,
+                        site_name=first.site_name,
+                        asset_type=first.asset_type,
+                        lat=sum(a.lat for a in site_assets) / len(site_assets),
+                        lon=sum(a.lon for a in site_assets) / len(site_assets),
+                        asset_count=len(site_assets),
+                        online_count=online,
+                    )
+                )
+            return result
+        finally:
+            session.close()
+
+    return cached("sites", KPI_CACHE_TTL_SECONDS, compute)
 
 
 @app.get("/api/assets", response_model=list[AssetOut], tags=["Anlagen"])

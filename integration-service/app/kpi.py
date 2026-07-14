@@ -13,8 +13,8 @@ from __future__ import annotations
 from collections import defaultdict
 from datetime import datetime, timedelta, timezone
 
-from sqlalchemy import select
-from sqlalchemy.orm import Session
+from sqlalchemy import func, select
+from sqlalchemy.orm import Session, aliased
 
 from .alarms import STATE_FAULT, STATE_MAINTENANCE, STATE_OFFLINE, STATE_ONLINE
 from .config import CO2_FACTOR_KG_PER_KWH
@@ -52,17 +52,24 @@ def _fetch_metric(
 
 
 def _latest_metric_per_asset(session: Session, metric: str) -> dict[str, tuple[datetime, float]]:
-    """Neuester Wert je Anlage für eine Metrik (z.B. aktuelle Leistung, aktueller Status)."""
-    stmt = (
-        select(Reading.asset_id, Reading.timestamp, Reading.value)
-        .where(Reading.metric == metric)
-        .order_by(Reading.asset_id, Reading.timestamp.desc())
+    """Neuester Wert je Anlage für eine Metrik (z.B. aktuelle Leistung, aktueller Status).
+
+    Per Index (asset_id, metric, timestamp) über eine korrelierte Subquery
+    gelöst, statt die komplette (unbegrenzte) Historie der Metrik in Python
+    zu laden und dort das neueste Element je Anlage zu suchen - bei
+    hunderttausenden Messwerten sonst ein teurer Full-Scan pro Aufruf.
+    """
+    R2 = aliased(Reading)
+    latest_ts = (
+        select(func.max(R2.timestamp))
+        .where(R2.asset_id == Reading.asset_id, R2.metric == metric)
+        .correlate(Reading)
+        .scalar_subquery()
     )
-    latest: dict[str, tuple[datetime, float]] = {}
-    for asset_id, ts, value in session.execute(stmt):
-        if asset_id not in latest:
-            latest[asset_id] = (ts, value)
-    return latest
+    stmt = select(Reading.asset_id, Reading.timestamp, Reading.value).where(
+        Reading.metric == metric, Reading.timestamp == latest_ts
+    )
+    return {asset_id: (ts, value) for asset_id, ts, value in session.execute(stmt)}
 
 
 def latest_power_by_asset(session: Session) -> dict[str, tuple[datetime, float]]:
@@ -118,32 +125,31 @@ def yield_series(session: Session, days: int = 30) -> list[dict]:
     start = (now - timedelta(days=days)).replace(hour=0, minute=0, second=0, microsecond=0)
 
     assets = session.execute(select(Asset)).scalars().all()
-    type_by_asset = {a.asset_id: a.asset_type for a in assets}
+    asset_ids_by_type: dict[str, list[str]] = defaultdict(list)
+    for a in assets:
+        asset_ids_by_type[a.asset_type].append(a.asset_id)
 
     power_points = _fetch_metric(session, "power_kw", start, now)
 
-    # Punkte je Anlage nach Kalendertag bucketen, pro Tag separat integrieren
-    per_day: dict[str, dict[str, list[tuple[datetime, float]]]] = defaultdict(lambda: defaultdict(list))
+    # Punkte je Anlage nach Kalendertag bucketen (ein Durchlauf über alle Messwerte)
+    per_asset_day: dict[str, dict[str, list[tuple[datetime, float]]]] = defaultdict(lambda: defaultdict(list))
+    day_keys: set[str] = set()
     for asset_id, points in power_points.items():
-        asset_type = type_by_asset.get(asset_id, "unknown")
         for ts, value in points:
             day_key = ts.date().isoformat()
-            per_day[day_key][asset_type].append((ts, value))
+            per_asset_day[asset_id][day_key].append((ts, value))
+            day_keys.add(day_key)
 
     series = []
-    for day_key in sorted(per_day.keys()):
-        by_type = per_day[day_key]
+    for day_key in sorted(day_keys):
         entry = {"date": day_key}
         for asset_type in ("wind_turbine", "pv_park", "bess"):
-            pts_by_asset: dict[str, list[tuple[datetime, float]]] = defaultdict(list)
-            # _integrate_trapezoidal erwartet EINE Zeitreihe je Anlage -> pro Anlage trennen
-            for asset_id, points in power_points.items():
-                if type_by_asset.get(asset_id) != asset_type:
-                    continue
-                day_points = [(ts, v) for ts, v in points if ts.date().isoformat() == day_key]
+            total_kwh = 0.0
+            for asset_id in asset_ids_by_type.get(asset_type, []):
+                day_points = per_asset_day.get(asset_id, {}).get(day_key)
                 if day_points:
-                    pts_by_asset[asset_id] = day_points
-            entry[asset_type] = round(sum(_integrate_trapezoidal(p) for p in pts_by_asset.values()), 1)
+                    total_kwh += _integrate_trapezoidal(day_points)
+            entry[asset_type] = round(total_kwh, 1)
         series.append(entry)
     return series
 

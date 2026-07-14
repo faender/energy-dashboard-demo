@@ -100,11 +100,12 @@ async def backfill_history() -> None:
         session.close()
 
 
-async def poll_once() -> None:
-    """Ein Durchlauf: aktuelle Werte holen, normalisieren, speichern, Alarme prüfen."""
+def _poll_once_sync(raw: list[dict]) -> None:
+    """Synchroner DB-Teil eines Poll-Durchlaufs - läuft via asyncio.to_thread,
+    damit die (blockierenden) SQLAlchemy-Aufrufe nicht den Event-Loop
+    einfrieren und dabei alle gerade laufenden API-Requests verzögern."""
     session = SessionLocal()
     try:
-        raw = await scada_client.fetch_live_readings()
         normalized, alarm_events = normalize_tag_readings(raw)
         _upsert_readings(session, normalized)
 
@@ -126,10 +127,17 @@ async def poll_once() -> None:
 
         sync_tickets_from_alarms(session, now)
         session.commit()
-    except Exception:
-        logger.exception("Fehler beim Live-Poll")
     finally:
         session.close()
+
+
+async def poll_once() -> None:
+    """Ein Durchlauf: aktuelle Werte holen, normalisieren, speichern, Alarme prüfen."""
+    try:
+        raw = await scada_client.fetch_live_readings()
+        await asyncio.to_thread(_poll_once_sync, raw)
+    except Exception:
+        logger.exception("Fehler beim Live-Poll")
 
 
 async def poll_live_forever() -> None:
